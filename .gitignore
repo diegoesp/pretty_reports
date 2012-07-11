@@ -11,6 +11,9 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
+# Pow Files
+.powrc
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 *.rbc
