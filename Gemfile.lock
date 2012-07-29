@@ -54,7 +54,6 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.3.6)
-    pdfcrowd (2.3.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -117,7 +116,6 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
-  pdfcrowd
   rails (= 3.2.6)
   rspec-rails
   sass-rails (~> 3.2.3)
