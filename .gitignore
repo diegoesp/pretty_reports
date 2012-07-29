@@ -32,3 +32,6 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+
+# Mac files
+.DS_Store
