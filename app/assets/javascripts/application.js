@@ -16,3 +16,4 @@
 //= require backbone
 //
 //= require common
+//= require reports

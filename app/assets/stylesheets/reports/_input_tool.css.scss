@@ -1,0 +1,38 @@
+
+#reports-new {
+  margin-top: 150px;
+  color: gray;
+  font-family: helvetica;
+  background-image: image-url('bg-pattern.png');
+
+  .input-tool-container-wrapper {
+    position: fixed;
+    top: -8px;
+    height: 100px;
+    width: 100%;
+
+    .input-tool-container {
+      position: relative;
+      @include box-shadow(0 0 50px 0.1px hsla(0, 0%, 0%, 0.40));
+      @include border-radius(8px);
+      background-color: white;
+      padding: 10px;
+      padding-top: 15px;
+      width: 600px;
+      height: 100px;
+      margin: auto;
+
+      .add-button {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+      }
+      .trash-button {
+        position: absolute;
+        bottom: 15px;
+        right: 85px;
+      }
+
+    }
+  }
+}
