@@ -1,9 +1,11 @@
 PrettyReports::Application.routes.draw do
 
-  resources :items
-
   root to: "home#index"
 
-  resources :reports
+  resources :reports do
+    member do
+      get 'download'
+    end
+  end
 
 end
