@@ -25,7 +25,7 @@ app.logger = {
 
 }
 // Shortcut
-window.pwLog = app.logger.log;
+window.prLog = app.logger.log;
 
 // On DOM Ready add behavior to the ajax-loading-indicator.
 $(function() {
