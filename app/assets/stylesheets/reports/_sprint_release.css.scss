@@ -1,0 +1,39 @@
+.sprint-release-report {
+  margin: auto;
+  @include box-shadow(0 0 50px 0.1px hsla(0, 0%, 0%, 0.40));
+  @include border-radius(8px);
+  background-color: white;
+  padding: 10px;
+  width: 940px;
+  color: gray;
+  font-family: helvetica;
+
+  section.delivered {
+
+    .item {
+      margin-bottom: 3px;
+      @extend .alert;
+      @extend .alert-success;
+    }
+  }
+
+  section.not-finished {
+
+    .item {
+      margin-bottom: 3px;
+      @extend .alert;
+      @extend .alert-info;
+    }
+  }
+
+  section.known-issues {
+
+    .item {
+      margin-bottom: 3px;
+      @extend .alert;
+      @extend .alert-error;
+    }
+  }
+
+
+}

@@ -14,5 +14,8 @@ class ReportsController < ApplicationController
     send_data(resp.body, :filename => "Report.pdf", :type => "application/pdf")
   end
 
+  def new
+    @report = Report.new
+  end
 
 end

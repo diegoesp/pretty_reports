@@ -15,7 +15,9 @@ ActiveRecord::Schema.define(:version => 20120730011522) do
 
   create_table "items", :force => true do |t|
     t.string   "item_type"
-    t.text     "content"
+    t.string   "section"
+    t.string   "title"
+    t.text     "subtitle"
     t.integer  "report_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

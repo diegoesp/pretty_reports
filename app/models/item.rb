@@ -1,4 +1,4 @@
 class Item < ActiveRecord::Base
   belongs_to :report
-  attr_accessible :content, :item_type
+  attr_accessible :title, :subtitle, :item_type, :section
 end

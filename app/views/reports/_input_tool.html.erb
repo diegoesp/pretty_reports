@@ -5,18 +5,29 @@
 
     <form>
       <label>Title:
-        <input type="text" name="title" class="title"></input>
+        <input type="text" name="title" value="As a User I want...">
+        </input>
       </label>
       <label>Subtitle:
-        <input type="text" name="subtitle" class="subtitle"></input>
+        <input type="text" name="subtitle"
+          value="Add some functionality..."></input>
       </label>
+      <label>Section:
+        <select name="section">
+          <option value="delivered">Delivered</option>
+          <option value="not-finished">Not Finished</option>
+          <option value="known-issue">Known Issue</option>
+        </select>
+      </label>
+
+
     </form>
 
-    <a class="js-add-button add-button btn btn-success" href="#">
+    <a class="js-add-button add-button btn btn-success">
       <i class="icon-plus icon-white"></i>
       Add
     </a>
-    <a class="js-trash-button trash-button btn btn-danger" href="#">
+    <a class="js-trash-button trash-button btn btn-danger">
       <i class="icon-trash icon-white"></i>
     </a>
 
