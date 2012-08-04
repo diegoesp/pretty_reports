@@ -1,0 +1,16 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    // Initialize the js for this particular page when the DOM is ready.
+    $(document).ready(function() {
+      app.reports.initialize({items: <%= @report.items.to_json.html_safe %>});
+    });
+  </script>
+<% end %>
+
+<% if @report.report_type == 'sprint-definition' %>
+  <%= render 'reports/templates/sprint_definition', locals: {report: @report} %>
+<% elsif @report.report_type == 'sprint-release' %>
+  <%= render 'reports/templates/sprint_release', locals: {report: @report} %>
+<% end %>
+
+<%= @data %>
