@@ -9,7 +9,9 @@ class ReportsController < ApplicationController
   end
 
   def download
-    url = CONVERT_API_BASE_URL + "curl=#{report_url(params[:id])}"
+    authenticated_url = report_url(params[:id]).sub 'http://', 'http://user:lacasadelarte@'
+
+    url = CONVERT_API_BASE_URL + "curl=#{authenticated_url}"
     resp = Net::HTTP.get_response(URI.parse(url)) # get_response takes an URI object
     send_data(resp.body, :filename => "Report.pdf", :type => "application/pdf")
   end
