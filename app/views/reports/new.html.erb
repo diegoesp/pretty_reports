@@ -1,0 +1,16 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    // Initialize the js for this particular page when the DOM is ready.
+    $(document).ready(function() {
+      app.reports.initialize({});
+    });
+  </script>
+<% end %>
+
+<% content_for :page_id do %>
+  "reports-new"
+<% end %>
+
+<%= render 'input_tool' %>
+
+<%= render 'reports/templates/sprint_release' %>
