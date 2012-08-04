@@ -8,9 +8,9 @@
 <% end %>
 
 <% if @report.report_type == 'sprint-definition' %>
-  <%= render 'reports/templates/sprint_definition', locals: {report: @report} %>
+  <%= render 'reports/sprint_definition/sprint_definition', locals: {report: @report} %>
 <% elsif @report.report_type == 'sprint-release' %>
-  <%= render 'reports/templates/sprint_release', locals: {report: @report} %>
+  <%= render 'reports/sprint_release/sprint_release', locals: {report: @report} %>
 <% end %>
 
 <%= @data %>
