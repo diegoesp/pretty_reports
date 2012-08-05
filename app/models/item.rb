@@ -1,4 +1,22 @@
 class Item < ActiveRecord::Base
-  belongs_to :report
+
   attr_accessible :title, :subtitle, :item_type, :section
+
+  belongs_to :report
+
 end
+# == Schema Information
+#
+# Table name: items
+#
+#  id         :integer         not null, primary key
+#  item_type  :string(255)
+#  section    :string(255)
+#  title      :string(255)
+#  subtitle   :text
+#  report_id  :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  position   :integer
+#
+
