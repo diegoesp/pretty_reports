@@ -1,108 +1,89 @@
 // Public: Representation of Sprint Release Report
 app.reports.SprintReleaseView = Base.View.extend({
 
-  // items            - Reference to the item models (not a collection)
+  // itemsAttrs        - Literal objects with the items attributes
+  // items             - Items Model Collection
+  // deliveredListEl   - Reference to the jquery wrapper for the delivered list
+  // notFinishedListEl - Reference to the jquery wrapper for the not
+  //                     finished list
+  // knownIssuesListEl - Reference to the jquery wrapper for the known
+  //                     Issues List
 
-  // deliveredItems   - Collection of items
-  // notFinishedItems - Collection of items
-  // knownIssuesItems - Collection of items
-
+  items: new app.reports.Items(),
 
   el: '.js-sprint-release-report',
 
   initialize: function(options) {
-    this.items = options.items;
+    this.itemsAttrs = options.itemsAttrs;
 
-    this.deliveredItems = new app.reports.Items();
-    this.notFinishedItems = new app.reports.Items();
-    this.knownIssuesItems = new app.reports.Items();
+    this.bindTo(app.events, 'item:create', this._createAndRenderItem);
 
-    this.bindTo(this.deliveredItems, 'add', this._deliveredItemAdded);
-    this.bindTo(this.notFinishedItems, 'add', this._notFinishedItemAdded);
-    this.bindTo(this.knownIssuesItems, 'add', this._knownIssueItemAdded);
-    this.bindTo(app.events, 'item:create', this._createItem);
-    this.bindTo(app.events, 'item:order:changed', this._updateItemsPosition);
+    this._initializeSortableLists();
 
+    _(this.itemsAttrs).each(function(itemAttrs) {
+      this._createAndRenderItem(itemAttrs);
+    }, this);
+  },
 
-    this.deliveredItems.add(_(this.items).filter(function(item){
-      return item.get('section') === 'delivered';
-    }));
-
-    this.notFinishedItems.add(_(this.items).filter(function(item){
-      return item.get('section') === 'not-finished';
-    }));
-
-    this.knownIssuesItems.add(_(this.items).filter(function(item){
-      return item.get('section') === 'known-issue';
-    }));
-
+  _initializeSortableLists: function() {
     var sortableDefaultOptions = {
       axis: 'y',
       cursor: 'move',
       opacity: '.3',
-      update: this._positionChanged
+      update: this._positionChanged,
+      that: this
     };
 
-    this.$('.js-delivered').sortable(_(sortableDefaultOptions).extend({
-      collection: this.deliveredItems
-    }));
-    this.$('.js-not-finished').sortable(_(sortableDefaultOptions).extend({
-      collection: this.notFinishedItems
-    }));
-    this.$('.js-known-issues').sortable(_(sortableDefaultOptions).extend({
-      collection: this.knownIssuesItems
-    }));
+    this.deliveredListEl = this.$('.js-delivered');
+    this.deliveredListEl.sortable(sortableDefaultOptions);
+
+    this.notFinishedListEl = this.$('.js-not-finished');
+    this.notFinishedListEl.sortable(sortableDefaultOptions);
+
+    this.knownIssuesListEl = this.$('.js-known-issues');
+    this.knownIssuesListEl.sortable(sortableDefaultOptions);
   },
 
-  _createItem: function(itemAttr) {
+  _createAndRenderItem: function(itemAttr) {
     var itemModel = new app.reports.Item(itemAttr);
     var section = itemModel.get('section');
 
+    this.items.add(itemModel);
+
     switch (section) {
       case 'delivered':
-        this.deliveredItems.add(itemModel);
+        this._renderItem(this.deliveredListEl, itemModel);
         break;
       case 'not-finished':
-        this.notFinishedItems.add(itemModel);
+        this._renderItem(this.notFinishedListEl, itemModel);
         break;
       case 'known-issue':
-        this.knownIssuesItems.add(itemModel);
+        this._renderItem(this.knownIssuesListEl, itemModel);
         break;
     }
   },
 
+  _renderItem: function(list, itemModel) {
+    var length = list.sortable('toArray').length;
+    itemModel.set('position', length);
+
+    var renderedItem =
+      new app.reports.ItemView({model: itemModel}).render().el;
+
+    list.append(renderedItem);
+  },
+
   _positionChanged: function(ev, ui) {
-    var sortable = $(this);
-    var ids = sortable.sortable('toArray');
-    var collection = sortable.sortable('option', 'collection');
+    var list = $(this);
+    var that = list.sortable('option', 'that');
+    var ids = list.sortable('toArray');
+    var collection = that.items;
 
     _(ids).each(function(id, index){
+
       var model = collection.getByCid(id);
       model.set('position', index);
     });
-  },
-
-  _deliveredItemAdded: function(itemModel) {
-    this._addItem(
-      this.$('.js-delivered'), this.deliveredItems, itemModel);
-  },
-
-  _notFinishedItemAdded: function(itemModel) {
-    this._addItem(
-      this.$('.js-not-finished'), this.notFinishedItems, itemModel);
-  },
-
-  _knownIssueItemAdded: function(itemModel) {
-    this._addItem(
-      this.$('.js-known-issues'), this.knownIssuesItems, itemModel);
-  },
-
-  _addItem: function(el, collection, itemModel) {
-    itemModel.set('position', collection.length - 1);
-    collection.add(itemModel);
-    var renderedItem =
-      new app.reports.ItemView({model: itemModel}).render().el;
-    el.append(renderedItem);
   }
 
 });

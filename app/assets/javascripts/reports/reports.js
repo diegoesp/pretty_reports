@@ -2,13 +2,13 @@ app.reports = {
 
   initialize: function(options) {
 
-    var itemModels = _.map(options.items, function(itemAttrs){
-      return new app.reports.Item({
+    var itemsAttrs = _.map(options.items, function(itemAttrs){
+      return {
         title: itemAttrs.title,
         type: itemAttrs.item_type,
         subtitle: itemAttrs.subtitle,
         section: itemAttrs.section
-      });
+      };
     }, this);
 
 
@@ -18,7 +18,7 @@ app.reports = {
         items: this.items
       }),
       sprintReleaseReport: new app.reports.SprintReleaseView({
-        items: itemModels
+        itemsAttrs: itemsAttrs
       })
     }
 
