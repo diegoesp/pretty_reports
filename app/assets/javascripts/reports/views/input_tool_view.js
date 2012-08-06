@@ -14,11 +14,13 @@ app.reports.InputToolView = Base.View.extend({
   },
 
   _addButtonClicked: function() {
-    this.items.add({
+    var itemAttr = {
       title: this.$('[name="title"]').val(),
       subtitle: this.$('[name="subtitle"]').val(),
       section: this.$('[name="section"]').val()
-    });
+    }
+
+    app.events.trigger('item:create', itemAttr);
   },
 
   _trashButtonClicked: function() {

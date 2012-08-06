@@ -11,8 +11,6 @@ app.reports = {
       });
     }, this);
 
-    // Colleciton of items
-    this.items = new app.reports.Items();
 
     // All the views on the screen
     this.views = {
@@ -20,13 +18,11 @@ app.reports = {
         items: this.items
       }),
       sprintReleaseReport: new app.reports.SprintReleaseView({
-        items: this.items
+        items: itemModels
       })
     }
 
   _.each(this.views, function (view) { view.render(); });
-
-  this.items.add(itemModels);
   }
 
 }

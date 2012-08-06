@@ -8,6 +8,14 @@
   color: gray;
   font-family: helvetica;
 
+  ul {
+    list-style: none;
+
+    li {
+      cursor: move;
+    }
+  }
+
   ul.delivered {
 
     .item {

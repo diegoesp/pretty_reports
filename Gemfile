@@ -8,6 +8,7 @@ gem 'rails', '3.2.6'
 gem 'bourbon'
 gem 'bootstrap-sass', '2.0.3.1'
 gem 'pg'
+gem 'jquery-ui-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
