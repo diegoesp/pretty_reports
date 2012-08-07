@@ -2,17 +2,22 @@ app.reports = {
 
   initialize: function(options) {
 
-    var itemModels = _.map(options.items, function(itemAttrs){
-      return new app.reports.Item({
+    $('#js-save-button').on('click', function(event){
+      app.events.trigger('report:save');
+    });
+
+    var itemsAttrs = _.map(options.items, function(itemAttrs){
+      return {
         title: itemAttrs.title,
         type: itemAttrs.item_type,
         subtitle: itemAttrs.subtitle,
         section: itemAttrs.section
-      });
+      };
     }, this);
 
-    // Colleciton of items
-    this.items = new app.reports.Items();
+    this.models = {
+      report: new app.reports.Report()
+    }
 
     // All the views on the screen
     this.views = {
@@ -20,13 +25,14 @@ app.reports = {
         items: this.items
       }),
       sprintReleaseReport: new app.reports.SprintReleaseView({
-        items: this.items
+        report: this.models.report,
+        itemsAttrs: itemsAttrs
       })
     }
 
-  _.each(this.views, function (view) { view.render(); });
+    _.each(this.views, function (view) { view.render(); });
 
-  this.items.add(itemModels);
+
   }
 
 }
