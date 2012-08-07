@@ -8,7 +8,15 @@
   color: gray;
   font-family: helvetica;
 
-  section.delivered {
+  ul {
+    list-style: none;
+
+    li {
+      cursor: move;
+    }
+  }
+
+  ul.delivered {
 
     .item {
       margin-bottom: 3px;
@@ -17,7 +25,7 @@
     }
   }
 
-  section.not-finished {
+  ul.not-finished {
 
     .item {
       margin-bottom: 3px;
@@ -26,7 +34,7 @@
     }
   }
 
-  section.known-issues {
+  ul.known-issues {
 
     .item {
       margin-bottom: 3px;

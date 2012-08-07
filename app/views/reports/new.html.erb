@@ -11,6 +11,11 @@
   "reports-new"
 <% end %>
 
-<%= render 'input_tool' %>
+<%= render 'reports/common/input_tool' %>
 
-<%= render 'reports/templates/sprint_release' %>
+<%= render 'reports/sprint_release/sprint_release' %>
+
+<div id="js-save-button" class="btn btn-success"
+  style="position:fixed;top:10px;left:10px">
+  Save
+</div>

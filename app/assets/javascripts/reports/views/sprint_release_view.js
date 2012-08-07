@@ -1,39 +1,95 @@
 // Public: Representation of Sprint Release Report
 app.reports.SprintReleaseView = Base.View.extend({
 
-  // items - Reference to the collection of items
+  // itemsAttrs        - Literal Item attributes. This list is only used
+  //                     when viewing a report with existent items.
+  // report            - Report Model
+  //
+  // deliveredListEl   - Reference to the jquery wrapper for the delivered list
+  // notFinishedListEl - Reference to the jquery wrapper for the not
+  //                     finished list
+  // knownIssuesListEl - Reference to the jquery wrapper for the known
+  //                     Issues List
 
   el: '.js-sprint-release-report',
 
   initialize: function(options) {
-    this.items = options.items;
-    this.bindTo(this.items, 'add', this._itemAdded);
+    this.report = options.report;
+    this.itemsAttrs = options.itemsAttrs;
+
+    this.bindTo(app.events, 'item:create', this._createAndRenderItem);
+    this.bindTo(app.events, 'report:save', this._reportSave);
+
+    this._initializeSortableLists();
+
+    _(this.itemsAttrs).each(function(itemAttrs) {
+      this._createAndRenderItem(itemAttrs);
+    }, this);
   },
 
-  _itemAdded: function(model) {
-    var section = model.get('section');
-    var renderedItem = new app.reports.ItemView({model: model}).render().el;
+  _initializeSortableLists: function() {
+    var sortableDefaultOptions = {
+      axis: 'y',
+      cursor: 'move',
+      opacity: '.3',
+      update: this._positionChanged,
+      that: this
+    };
 
-    if (section === 'delivered') {
-      this._addToDelivered(renderedItem);
-    } else if (section === 'not-finished') {
-      this._addToNotFinished(renderedItem);
-    } else if (section === 'known-issue') {
-      this._addToKnownIssues(renderedItem);
+    this.deliveredListEl = this.$('.js-delivered');
+    this.deliveredListEl.sortable(sortableDefaultOptions);
+
+    this.notFinishedListEl = this.$('.js-not-finished');
+    this.notFinishedListEl.sortable(sortableDefaultOptions);
+
+    this.knownIssuesListEl = this.$('.js-known-issues');
+    this.knownIssuesListEl.sortable(sortableDefaultOptions);
+  },
+
+  _reportSave: function() {
+    this.report.save();
+  },
+
+  _createAndRenderItem: function(itemAttr) {
+    var itemModel = new app.reports.Item(itemAttr);
+    var section = itemModel.get('section');
+
+    this.report.items.add(itemModel);
+
+    switch (section) {
+      case 'delivered':
+        this._renderItem(this.deliveredListEl, itemModel);
+        break;
+      case 'not-finished':
+        this._renderItem(this.notFinishedListEl, itemModel);
+        break;
+      case 'known-issue':
+        this._renderItem(this.knownIssuesListEl, itemModel);
+        break;
     }
-
   },
 
-  _addToDelivered: function(itemView) {
-    this.$('.js-delivered').append(itemView);
+  _renderItem: function(list, itemModel) {
+    var length = list.sortable('toArray').length;
+    itemModel.set('position', length);
+
+    var renderedItem =
+      new app.reports.ItemView({model: itemModel}).render().el;
+
+    list.append(renderedItem);
   },
 
-  _addToNotFinished: function(itemView) {
-    this.$('.js-not-finished').append(itemView);
-  },
+  _positionChanged: function(ev, ui) {
+    var list = $(this);
+    var that = list.sortable('option', 'that');
+    var ids = list.sortable('toArray');
+    var collection = that.report.items;
 
-  _addToKnownIssues: function(itemView) {
-    this.$('.js-known-issues').append(itemView);
+    _(ids).each(function(id, index){
+
+      var model = collection.getByCid(id);
+      model.set('position', index);
+    });
   }
 
 });
