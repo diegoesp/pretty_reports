@@ -2,6 +2,8 @@ require 'net/http'
 
 class ReportsController < ApplicationController
 
+  respond_to :json
+
   CONVERT_API_BASE_URL = 'http://do.convertapi.com/web2pdf?'
 
   def show
@@ -16,6 +18,25 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
+  end
+
+  def create
+    @report = Report.new(params[:report].except(:items))
+    @report.items = @report.items.build(params[:report][:items])
+    @report.save
+
+    render json: @report.to_json(include: :items)
+  end
+
+  def update
+    @report = Report.find(params[:report][:id])
+    @report.attributes = params[:report].except(:items, :id)
+
+    @report.items = @report.items.build(params[:report][:items])
+
+    @report.save
+
+    render json: @report.to_json(include: :items)
   end
 
 end

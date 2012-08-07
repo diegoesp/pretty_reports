@@ -1,22 +1,24 @@
 // Public: Representation of Sprint Release Report
 app.reports.SprintReleaseView = Base.View.extend({
 
-  // itemsAttrs        - Literal objects with the items attributes
-  // items             - Items Model Collection
+  // itemsAttrs        - Literal Item attributes. This list is only used
+  //                     when viewing a report with existent items.
+  // report            - Report Model
+  //
   // deliveredListEl   - Reference to the jquery wrapper for the delivered list
   // notFinishedListEl - Reference to the jquery wrapper for the not
   //                     finished list
   // knownIssuesListEl - Reference to the jquery wrapper for the known
   //                     Issues List
 
-  items: new app.reports.Items(),
-
   el: '.js-sprint-release-report',
 
   initialize: function(options) {
+    this.report = options.report;
     this.itemsAttrs = options.itemsAttrs;
 
     this.bindTo(app.events, 'item:create', this._createAndRenderItem);
+    this.bindTo(app.events, 'report:save', this._reportSave);
 
     this._initializeSortableLists();
 
@@ -44,11 +46,15 @@ app.reports.SprintReleaseView = Base.View.extend({
     this.knownIssuesListEl.sortable(sortableDefaultOptions);
   },
 
+  _reportSave: function() {
+    this.report.save();
+  },
+
   _createAndRenderItem: function(itemAttr) {
     var itemModel = new app.reports.Item(itemAttr);
     var section = itemModel.get('section');
 
-    this.items.add(itemModel);
+    this.report.items.add(itemModel);
 
     switch (section) {
       case 'delivered':
@@ -77,7 +83,7 @@ app.reports.SprintReleaseView = Base.View.extend({
     var list = $(this);
     var that = list.sortable('option', 'that');
     var ids = list.sortable('toArray');
-    var collection = that.items;
+    var collection = that.report.items;
 
     _(ids).each(function(id, index){
 

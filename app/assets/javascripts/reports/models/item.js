@@ -1,7 +1,7 @@
 app.reports.Item = Base.Model.extend({
 
   defaults: {
-    type: 'feature',
+    item_type: 'feature',
     section: 'delivered'
   }
 
