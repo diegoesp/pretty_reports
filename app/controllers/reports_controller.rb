@@ -6,6 +6,10 @@ class ReportsController < ApplicationController
 
   CONVERT_API_BASE_URL = 'http://do.convertapi.com/web2pdf?'
 
+  def index
+    @reports = Report.all
+  end
+
   def show
     @report = Report.find(params[:id])
   end
