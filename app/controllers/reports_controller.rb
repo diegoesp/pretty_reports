@@ -32,6 +32,10 @@ class ReportsController < ApplicationController
     render json: @report.to_json(include: :items)
   end
 
+  def edit
+    @report = Report.find(params[:id])
+  end
+
   def update
     @report = Report.find(params[:report][:id])
     @report.attributes = params[:report].except(:items, :id)
