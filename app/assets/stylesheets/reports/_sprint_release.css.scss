@@ -43,5 +43,23 @@
     }
   }
 
+  .item {
+    position: relative;
+
+    .remove {
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      top: 0px;
+      width: 20px;
+      height: 34px;
+
+      i {
+        top: 9px;
+        position: relative;
+        left: 2px;
+      }
+    }
+  }
 
 }
