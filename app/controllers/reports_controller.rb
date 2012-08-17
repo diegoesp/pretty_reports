@@ -43,4 +43,11 @@ class ReportsController < ApplicationController
     render json: @report.to_json(include: :items)
   end
 
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+
+    redirect_to reports_url
+  end
+
 end
