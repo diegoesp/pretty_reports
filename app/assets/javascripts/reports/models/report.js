@@ -18,6 +18,7 @@ app.reports.Report = Base.Model.extend({
   toJSON: function() {
     var json = {report: this.attributes};
     json.report.items = this.items.toJSON();
+    prLog(json);
     return json;
   }
 
