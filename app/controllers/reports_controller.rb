@@ -6,6 +6,10 @@ class ReportsController < ApplicationController
 
   CONVERT_API_BASE_URL = 'http://do.convertapi.com/web2pdf?'
 
+  def index
+    @reports = Report.order("created_at")
+  end
+
   def show
     @report = Report.find(params[:id])
   end
@@ -28,6 +32,10 @@ class ReportsController < ApplicationController
     render json: @report.to_json(include: :items)
   end
 
+  def edit
+    @report = Report.find(params[:id])
+  end
+
   def update
     @report = Report.find(params[:report][:id])
     @report.attributes = params[:report].except(:items, :id)
@@ -37,6 +45,13 @@ class ReportsController < ApplicationController
     @report.save
 
     render json: @report.to_json(include: :items)
+  end
+
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+
+    redirect_to reports_url
   end
 
 end
