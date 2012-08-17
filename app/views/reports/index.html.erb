@@ -5,6 +5,7 @@
   <table class="table table-striped table-bordered table-condensed">
     <tr>
       <th>Id</th>
+      <th>Created</th>
       <th>Title</th>
       <th>Report Type</th>
       <th>Actions</th>
@@ -13,6 +14,7 @@
   <% @reports.each do |report| %>
     <tr>
       <td><%= report.id %></td>
+      <td><%= report.created_at %></td>
       <td><%= report.title %></td>
       <td><%= report.report_type %></td>
       <td>

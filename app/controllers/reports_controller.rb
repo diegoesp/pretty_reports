@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
   CONVERT_API_BASE_URL = 'http://do.convertapi.com/web2pdf?'
 
   def index
-    @reports = Report.all
+    @reports = Report.order("created_at")
   end
 
   def show
