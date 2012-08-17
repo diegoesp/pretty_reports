@@ -1,6 +1,6 @@
 app.reports.Report = Base.Model.extend({
 
-  // items      - Item Models
+  // items      - Item Models (backbone collection)
 
   defaults: {
     report_type: 'sprint-release',
@@ -19,6 +19,10 @@ app.reports.Report = Base.Model.extend({
     }
 
     this.items.add(options.items);
+
+    // Remove the raw hash of items. At this point they have been converted
+    // to models and stored in a collection.
+    this.unset('items');
   },
 
   toJSON: function() {
