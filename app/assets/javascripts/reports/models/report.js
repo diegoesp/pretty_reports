@@ -1,6 +1,6 @@
 app.reports.Report = Base.Model.extend({
 
-  // items      - Items Model
+  // items      - Item Models
 
   defaults: {
     report_type: 'sprint-release',
@@ -13,6 +13,12 @@ app.reports.Report = Base.Model.extend({
 
   initialize: function(options) {
     this.items = new app.reports.Items();
+
+    if (!options.items) {
+      return;
+    }
+
+    this.items.add(options.items);
   },
 
   toJSON: function() {

@@ -3,9 +3,10 @@
     // Initialize the js for this particular page when the DOM is ready.
     $(document).ready(function() {
       app.reports.initialize({
-        report: <%= @report.to_json(include: :items).html_safe %>
+        report: <%= @report.to_json.html_safe %>
       });
     });
+    prLog(<%= @report.to_json.html_safe %>);
   </script>
 <% end %>
 
