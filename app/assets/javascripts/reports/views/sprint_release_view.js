@@ -25,6 +25,7 @@ app.reports.SprintReleaseView = Base.View.extend({
       this._addItem(itemModel);
     }, this);
 
+    this._initializeContentEditableElements();
   },
 
   _initializeSortableLists: function() {
@@ -46,7 +47,12 @@ app.reports.SprintReleaseView = Base.View.extend({
     this.knownIssuesListEl.sortable(sortableDefaultOptions);
   },
 
+  _initializeContentEditableElements: function() {
+    this.$('.js-content-editable').attr('contenteditable', true);
+  },
+
   _reportSave: function() {
+    this.model.set('title', $('.js-title').text());
     this.model.save();
   },
 
