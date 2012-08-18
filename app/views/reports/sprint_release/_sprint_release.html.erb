@@ -1,6 +1,8 @@
 
 <div class="js-sprint-release-report sprint-release-report">
-  <h1 class="hero-unit">Sprint Release</h1>
+  <h1 class="hero-unit js-title js-content-editable">
+    <%= @report.title || "Sprint Release"%>
+  </h1>
 
   <h3>Delivered Features</h3>
   <ul class="js-delivered delivered">
