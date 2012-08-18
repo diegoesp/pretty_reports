@@ -7,7 +7,10 @@ class Report < ActiveRecord::Base
     dependent: :delete_all
 
   def as_json(options={})
-    result = super({except: [:created_at, :updated_at]}.merge(options))
+    result = super(
+      {except: [:created_at, :updated_at]}.merge(options))
+    result[:items] = self.items.as_json()
+    result
   end
 
 end

@@ -14,8 +14,6 @@ app.reports.SprintReleaseView = Base.View.extend({
   el: '.js-sprint-release-report',
 
   initialize: function(options) {
-    this.report = options.report;
-    this.itemsAttrs = options.itemsAttrs;
 
     this.bindTo(app.events, 'item:create', this._createAndRenderItem);
     this.bindTo(app.events, 'item:remove', this._removeItem);
@@ -23,9 +21,10 @@ app.reports.SprintReleaseView = Base.View.extend({
 
     this._initializeSortableLists();
 
-    _(this.itemsAttrs).each(function(itemAttrs) {
-      this._createAndRenderItem(itemAttrs);
+    _.each(this.model.items.models, function(itemModel) {
+      this._addItem(itemModel);
     }, this);
+
   },
 
   _initializeSortableLists: function() {
@@ -48,14 +47,17 @@ app.reports.SprintReleaseView = Base.View.extend({
   },
 
   _reportSave: function() {
-    this.report.save();
+    this.model.save();
   },
 
-  _createAndRenderItem: function(itemAttr) {
-    var itemModel = new app.reports.Item(itemAttr);
-    var section = itemModel.get('section');
+  _createAndRenderItem: function(itemAttrs) {
+    var itemModel = new app.reports.Item(itemAttrs);
+    this.model.items.add(itemModel);
+    this._addItem(itemModel);
+  },
 
-    this.report.items.add(itemModel);
+  _addItem: function(itemModel) {
+    var section = itemModel.get('section');
 
     switch (section) {
       case 'delivered':
@@ -70,14 +72,7 @@ app.reports.SprintReleaseView = Base.View.extend({
     }
   },
 
-  _removeItem: function(params) {
-    var itemModel = this.report.items.getByCid(params.model.cid);
-    this.report.items.remove(itemModel);
-    params.view.dispose();
-    this._updatePositionsAfterRemoving();
-  },
-
-  _renderItem: function(list, itemModel) {
+ _renderItem: function(list, itemModel) {
     var length = list.sortable('toArray').length;
     itemModel.set('position', length);
 
@@ -87,11 +82,18 @@ app.reports.SprintReleaseView = Base.View.extend({
     list.append(renderedItem);
   },
 
+  _removeItem: function(params) {
+    var itemModel = this.model.items.getByCid(params.model.cid);
+    this.model.items.remove(itemModel);
+    params.view.dispose();
+    this._updatePositionsAfterRemoving();
+  },
+
   _positionChanged: function(ev, ui) {
     var list = $(this);
     var that = list.sortable('option', 'that');
     var ids = list.sortable('toArray');
-    var collection = that.report.items;
+    var collection = that.model.items;
 
     _(ids).each(function(id, index){
 
@@ -108,7 +110,7 @@ app.reports.SprintReleaseView = Base.View.extend({
 
   _updatePositionsForIds: function(ids) {
     _(ids).each(function(id, index){
-      var model = this.report.items.getByCid(id);
+      var model = this.model.items.getByCid(id);
       model.set('position', index);
     }, this);
   }

@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
   belongs_to :report
 
   def as_json(options={})
-    result = super({except: [:created_at, :updated_at]}.merge(options))
+    result = super({except: [:created_at, :updated_at, :report_id]}.merge(options))
   end
 
 end
