@@ -17,7 +17,10 @@ app.reports.SprintReleaseView = Base.View.extend({
 
     this.bindTo(app.events, 'item:create', this._createAndRenderItem);
     this.bindTo(app.events, 'item:remove', this._removeItem);
-    this.bindTo(app.events, 'report:save', this._reportSave);
+    this.bindTo(app.events, 'report:save:clicked', this._reportSaveRequested);
+    this.bindTo(app.events, 'report:download:clicked', this._downloadRequested);
+    this.bindTo(this.model, 'change:waitingForDownload',
+      this._waitingForDownload);
 
     this._initializeSortableLists();
 
@@ -51,9 +54,18 @@ app.reports.SprintReleaseView = Base.View.extend({
     this.$('.js-content-editable').attr('contenteditable', true);
   },
 
-  _reportSave: function() {
+  _reportSaveRequested: function() {
+    this._updateModelBeforeSaving();
+    app.events.trigger('report:save', this.model);
+  },
+
+  _downloadRequested: function() {
+    this._updateModelBeforeSaving();
+    app.events.trigger('report:download', this.model);
+  },
+
+  _updateModelBeforeSaving: function() {
     this.model.set('title', $('.js-title').text());
-    this.model.save();
   },
 
   _createAndRenderItem: function(itemAttrs) {
@@ -119,6 +131,14 @@ app.reports.SprintReleaseView = Base.View.extend({
       var model = this.model.items.getByCid(id);
       model.set('position', index);
     }, this);
+  },
+
+  _waitingForDownload: function(model) {
+    if (model.get('waitingForDownload') === true) {
+      $('.js-download-button').addClass('waiting-for-download');
+    } else {
+      $('.js-download-button').removeClass('waiting-for-download');
+    }
   }
 
 });
