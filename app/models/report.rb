@@ -1,16 +1,3 @@
-class Report < ActiveRecord::Base
-
-  attr_accessible :title, :subtitle, :content1, :content2,
-    :content3, :report_type
-
-  has_many :items, order: "position ASC",
-    dependent: :delete_all
-
-  def as_json(options={})
-    result = super({except: [:created_at, :updated_at]}.merge(options))
-  end
-
-end
 # == Schema Information
 #
 # Table name: reports
@@ -26,3 +13,16 @@ end
 #  updated_at  :datetime        not null
 #
 
+class Report < ActiveRecord::Base
+
+  attr_accessible :title, :subtitle, :content1, :content2,
+    :content3, :report_type
+
+  has_many :items, order: "position ASC",
+    dependent: :delete_all
+
+  def as_json(options={})
+    result = super({except: [:created_at, :updated_at]}.merge(options))
+  end
+
+end
