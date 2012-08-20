@@ -18,7 +18,7 @@ class ReportsController < ApplicationController
     # url = CONVERT_API_BASE_URL + "curl=http://www.mozilla.org/en-US/firefox/14.0.1/releasenotes/"
     # resp = Net::HTTP.get_response(URI.parse(url)) # get_response takes an URI object
     # send_data(resp.body, :filename => "Report.pdf", :type => "application/pdf")
-    render json: {response: 'here you have your file'}
+    send_file '/Users/rafaelchiti/Downloads/firefox.pdf'
   end
 
   def new
@@ -57,8 +57,15 @@ class ReportsController < ApplicationController
   end
 
   def download_available
-    @report = Report.find(params[:id])
-    render json: {downloadAvailable: true}
+    # @report = Report.find(params[:id])
+
+    if (false)
+      render json: {message: 'Not yet', code: '100'}
+      return
+    else
+      render json: {message: 'Download ready', code: '101'}
+      return
+    end
   end
 
 end

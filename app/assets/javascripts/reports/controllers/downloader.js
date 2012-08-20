@@ -1,6 +1,5 @@
 app.reports.Downloader = function(options) {
 
-  this.downloadAvailable = false;
   this.interval = null;
   this.intents = 0;
   this.reportModel = null;
@@ -20,28 +19,23 @@ app.reports.Downloader = function(options) {
   // This one will run in a loop until the report is generated.
   this._run = function() {
 
-    var baseURL = this.reportModel.url();
-    var url = baseURL + '/download-available';
-
     $.ajax({
       dataType: 'json',
-      url: url,
+      url: this.reportModel.url() + '/download-available',
       context: this,
       success: this._success
     });
   };
 
   this._success = function(response) {
-    if (response.downloadAvailable === true) {
-      this.downloadAvailable = true;
+    if (response.code === '101') {
       clearInterval(this.interval);
       this.reportModel.set('downloadAvailable', true);
       this.reportModel.set('waitingForDownload', false);
       this.intents = 0;
-    } else if (response.downloadAvailable === false) {
-      prLog('still false');
+    } else if (response.code === '100') {
+      prLog('Msg: ' + response.message + ' >> Code: ' + response.code);
       this.intents++;
-      this.downloadAvailable = false;
     }
   };
 

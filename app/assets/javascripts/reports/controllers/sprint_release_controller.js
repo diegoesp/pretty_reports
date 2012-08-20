@@ -7,7 +7,7 @@ app.reports.SprintReleaseController = function(options) {
   this.initialize = function() {
     app.events.on('report:save', this._saveReport, this);
     app.events.on('report:download', this._downloadReport, this);
-    this.report.on('change:downloadAvailable', this._downloadAvailable);
+    this.report.on('change:downloadAvailable', this._downloadAvailable, this);
   };
 
   // Save the report. If a callback is passed as parameter then attach
@@ -20,35 +20,43 @@ app.reports.SprintReleaseController = function(options) {
         successCallback.apply(that);
       }
     }
-    reportModel.save(null, options);
+    this.report.save(null, options);
   };
 
-  this._downloadReport = function(reportModel) {
-    reportModel.set('waitingForDownload', true);
-    reportModel.set('downloadAvailable', false);
-    this._saveReport(reportModel, this._processDownload);
+  this._downloadReport = function() {
+    this.report.set('waitingForDownload', true);
+    this.report.set('downloadAvailable', false);
+    this._saveReport(this.report, this._processDownload);
   };
 
   // Put the downloader to run
   this._processDownload = function() {
-    this.downloader.run(this.report);
+    $.ajax({
+      url: this.report.url() + '/download-available',
+      context: this,
+      success: function(response) {
+        if (response.code === '100') {
+          this.downloader.run(this.report);
+        } else if (response.code === '101') {
+          this.report.set('downloadAvailable', true);
+          this.report.set('waitingForDownload', false);
+        }
+      }
+    });
   };
 
   this._downloadAvailable = function(model) {
     if (model.get('downloadAvailable') === true) {
-      var url = model.url() + '/download';
-      $.ajax({
-        dataType: 'json',
-        url: url,
-        context: this,
-        success: function(response) {prLog(response.response);}
-      });
-
+      this._downloadFile();
     } else {
       prLog('download not available yet');
     }
   };
 
+  this._downloadFile = function() {
+    prLog('downloading file');
+    window.location.href = this.report.url() + '/download';
+  };
 
   // --
   this.initialize(options);
