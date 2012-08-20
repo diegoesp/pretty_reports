@@ -9,13 +9,16 @@ app.reports = {
       options.report = {};
     }
 
-    $('#js-save-button').on('click', function(event){
-      app.events.trigger('report:save');
+    $('.js-save-button').on('click', function(event){
+      app.events.trigger('report:save:clicked');
+    });
+    $('.js-download-button').on('click', function(event){
+      app.events.trigger('report:download:clicked');
     });
 
     this.models = {
       report: new app.reports.Report(options.report)
-    }
+    };
 
     // All the views on the screen
     this.views = {
@@ -25,7 +28,16 @@ app.reports = {
       sprintReleaseReport: new app.reports.SprintReleaseView({
         model: this.models.report,
       })
-    }
+    };
+
+    this.controllers = {
+      sprintReleaseController:
+        new app.reports.SprintReleaseController(
+          {
+            view: this.views.sprintReleaseReport,
+            report: this.models.report
+          })
+    };
 
     _.each(this.views, function (view) { view.render(); });
 
