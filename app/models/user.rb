@@ -15,9 +15,11 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
-#  admin                  :
+#  admin                  :boolean
 #
 
+# A user for Pretty reports. It can either be an admin user or a standard user.
+# It packs an integration with active admin framework
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -25,6 +27,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   	:recoverable, :rememberable, :trackable, :validatable
 
+  has_one :plan
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin, :plan  
 end

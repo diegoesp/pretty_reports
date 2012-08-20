@@ -6,5 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(:email => "admin@prettyreports.com", :password => "password", :admin => true)
-User.create!(:email => "user@prettyreports.com", :password => "password", :admin => false)
+plan1 = Plan.create!(:name => "Basic", :cost => 1.99, :active => true)
+plan2 = Plan.create!(:name => "Intensive", :cost => 4.99, :active => true)
+plan3 = Plan.create!(:name => "Full", :cost => 9.99, :active => true)
+
+User.create!(:email => "admin@prettyreports.com", :password => "password", :admin => true, :plan => plan3)
+User.create!(:email => "user@prettyreports.com", :password => "password", :admin => false, :plan => plan2)
