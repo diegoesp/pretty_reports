@@ -41,7 +41,7 @@ ActiveAdmin::Dashboards.build do
   # section "Membership Summary", :if => :memberships_enabled?
   # section "Membership Summary", :if => Proc.new { current_admin_user.account.memberships.any? }
 
-  section "Recently creatd users at Pretty Reports" do
+  section "Recently created users" do
 
     table_for User.order("created_at desc").limit(5) do
       column :email
