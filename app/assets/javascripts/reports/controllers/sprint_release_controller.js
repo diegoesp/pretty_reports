@@ -32,7 +32,7 @@ app.reports.SprintReleaseController = function(options) {
   // Put the downloader to run
   this._processDownload = function() {
     $.ajax({
-      url: this.report.url() + '/download-available',
+      url: this.report.url() + '/download',
       context: this,
       success: function(response) {
         if (response.code === '100') {
@@ -55,7 +55,7 @@ app.reports.SprintReleaseController = function(options) {
 
   this._downloadFile = function() {
     prLog('downloading file');
-    window.location.href = this.report.url() + '/download';
+    window.location.href = this.report.url() + '.pdf';
   };
 
   // --

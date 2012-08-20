@@ -11,7 +11,7 @@ app.reports.Downloader = function(options) {
 
     this.interval = this._setIntervalWithContext(function() {
       this._run(reportModel);
-    }, 1000, this);
+    }, 1500, this);
 
   };
 
@@ -21,7 +21,7 @@ app.reports.Downloader = function(options) {
 
     $.ajax({
       dataType: 'json',
-      url: this.reportModel.url() + '/download-available',
+      url: this.reportModel.url() + '/download',
       context: this,
       success: this._success
     });
