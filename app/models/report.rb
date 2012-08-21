@@ -27,7 +27,7 @@ class Report < ActiveRecord::Base
       begin
         report_url = report_url.sub('http://', 'http://user:lacasadelarte@')
         url = "#{CONVERT_API_BASE_URL}curl=#{report_url}"
-        logger.debug(">>>>>>> Generating for url: #{url}")
+        logger.info(">>>>>>> Generating for url: #{url}")
         resp = Net::HTTP.get_response(URI.parse(url))
         logger.debug(resp.code)
         File.open(self.file_url, 'wb') do |f|

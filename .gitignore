@@ -9,7 +9,7 @@
 /.bundle
 
 # Pdf folder
-/pdfs/*
+/pdfs/*.pdf
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
