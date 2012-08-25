@@ -14,18 +14,22 @@ app.reports.SprintReleaseView = Base.View.extend({
   el: '.js-sprint-release-report',
 
   initialize: function(options) {
-    this.report = options.report;
-    this.itemsAttrs = options.itemsAttrs;
 
     this.bindTo(app.events, 'item:create', this._createAndRenderItem);
     this.bindTo(app.events, 'item:remove', this._removeItem);
-    this.bindTo(app.events, 'report:save', this._reportSave);
+
+    this.bindTo(app.events, 'report:save:clicked', this._reportSaveRequested);
+    this.bindTo(app.events, 'report:download:clicked', this._downloadRequested);
+    this.bindTo(this.model, 'change:waitingForDownload',
+    this._waitingForDownload);
 
     this._initializeSortableLists();
 
-    _(this.itemsAttrs).each(function(itemAttrs) {
-      this._createAndRenderItem(itemAttrs);
+    _.each(this.model.items.models, function(itemModel) {
+      this._addItem(itemModel);
     }, this);
+
+    this._initializeContentEditableElements();
   },
 
   _initializeSortableLists: function() {
@@ -47,15 +51,32 @@ app.reports.SprintReleaseView = Base.View.extend({
     this.knownIssuesListEl.sortable(sortableDefaultOptions);
   },
 
-  _reportSave: function() {
-    this.report.save();
+  _initializeContentEditableElements: function() {
+    this.$('.js-content-editable').attr('contenteditable', true);
   },
 
-  _createAndRenderItem: function(itemAttr) {
-    var itemModel = new app.reports.Item(itemAttr);
-    var section = itemModel.get('section');
+  _reportSaveRequested: function() {
+    this._updateModelBeforeSaving();
+    app.events.trigger('report:save', this.model);
+  },
 
-    this.report.items.add(itemModel);
+  _downloadRequested: function() {
+    this._updateModelBeforeSaving();
+    app.events.trigger('report:download', this.model);
+  },
+
+  _updateModelBeforeSaving: function() {
+    this.model.set('title', $('.js-title').text());
+  },
+
+  _createAndRenderItem: function(itemAttrs) {
+    var itemModel = new app.reports.Item(itemAttrs);
+    this.model.items.add(itemModel);
+    this._addItem(itemModel);
+  },
+
+  _addItem: function(itemModel) {
+    var section = itemModel.get('section');
 
     switch (section) {
       case 'delivered':
@@ -70,6 +91,9 @@ app.reports.SprintReleaseView = Base.View.extend({
     }
   },
 
+<<<<<<< HEAD
+ _renderItem: function(list, itemModel) {
+=======
   _removeItem: function(params) {
     var itemModel = this.report.items.getByCid(params.model.cid);
     this.report.items.remove(itemModel);
@@ -78,6 +102,7 @@ app.reports.SprintReleaseView = Base.View.extend({
   },
 
   _renderItem: function(list, itemModel) {
+>>>>>>> active_admin
     var length = list.sortable('toArray').length;
     itemModel.set('position', length);
 
@@ -87,11 +112,18 @@ app.reports.SprintReleaseView = Base.View.extend({
     list.append(renderedItem);
   },
 
+  _removeItem: function(params) {
+    var itemModel = this.model.items.getByCid(params.model.cid);
+    this.model.items.remove(itemModel);
+    params.view.dispose();
+    this._updatePositionsAfterRemoving();
+  },
+
   _positionChanged: function(ev, ui) {
     var list = $(this);
     var that = list.sortable('option', 'that');
     var ids = list.sortable('toArray');
-    var collection = that.report.items;
+    var collection = that.model.items;
 
     _(ids).each(function(id, index){
 
@@ -108,9 +140,23 @@ app.reports.SprintReleaseView = Base.View.extend({
 
   _updatePositionsForIds: function(ids) {
     _(ids).each(function(id, index){
+<<<<<<< HEAD
+      var model = this.model.items.getByCid(id);
+      model.set('position', index);
+    }, this);
+  },
+
+  _waitingForDownload: function(model) {
+    if (model.get('waitingForDownload') === true) {
+      $('.js-download-button').addClass('waiting-for-download');
+    } else {
+      $('.js-download-button').removeClass('waiting-for-download');
+    }
+=======
       var model = this.report.items.getByCid(id);
       model.set('position', index);
     }, this);
+>>>>>>> active_admin
   }
 
 });

@@ -3,7 +3,7 @@
     // Initialize the js for this particular page when the DOM is ready.
     $(document).ready(function() {
       app.reports.initialize({
-        report: <%= @report.to_json(include: :items).html_safe %>
+        report: <%= @report.to_json.html_safe %>
       });
     });
   </script>
@@ -17,7 +17,19 @@
 
 <%= render 'reports/sprint_release/sprint_release' %>
 
+<<<<<<< HEAD
+<div class="js-save-button btn btn-success"
+  style="position:fixed;top:10px;left:10px">
+  Save
+</div>
+
+<div class="js-download-button download-button btn btn-success"
+  style="position:fixed;top:10px;left:70px">
+  Download
+</div>
+=======
 <div id="js-save-button" class="btn btn-success"
   style="position:fixed;top:10px;left:10px">
   Save
 </div>
+>>>>>>> active_admin

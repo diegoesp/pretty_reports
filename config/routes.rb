@@ -10,6 +10,7 @@ PrettyReports::Application.routes.draw do
   resources :reports do
     member do
       get 'download'
+      get 'download_available', path: 'download-available'
     end
   end
 
