@@ -91,18 +91,7 @@ app.reports.SprintReleaseView = Base.View.extend({
     }
   },
 
-<<<<<<< HEAD
  _renderItem: function(list, itemModel) {
-=======
-  _removeItem: function(params) {
-    var itemModel = this.report.items.getByCid(params.model.cid);
-    this.report.items.remove(itemModel);
-    params.view.dispose();
-    this._updatePositionsAfterRemoving();
-  },
-
-  _renderItem: function(list, itemModel) {
->>>>>>> active_admin
     var length = list.sortable('toArray').length;
     itemModel.set('position', length);
 
@@ -140,7 +129,6 @@ app.reports.SprintReleaseView = Base.View.extend({
 
   _updatePositionsForIds: function(ids) {
     _(ids).each(function(id, index){
-<<<<<<< HEAD
       var model = this.model.items.getByCid(id);
       model.set('position', index);
     }, this);
@@ -152,11 +140,6 @@ app.reports.SprintReleaseView = Base.View.extend({
     } else {
       $('.js-download-button').removeClass('waiting-for-download');
     }
-=======
-      var model = this.report.items.getByCid(id);
-      model.set('position', index);
-    }, this);
->>>>>>> active_admin
   }
 
 });
