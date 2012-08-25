@@ -9,14 +9,15 @@
   </script>
 <% end %>
 
-<% if @report.report_type == 'sprint-definition' %>
-  <%= render 'reports/sprint_definition/sprint_definition',
-    locals: {report: @report} %>
-
-<% elsif @report.report_type == 'sprint-release' %>
-  <%= render 'reports/sprint_release/sprint_release',
-    locals: {report: @report} %>
-
+<% content_for :page_id do %>
+  "reports-new"
 <% end %>
 
-<%= @data %>
+<%= render 'reports/common/input_tool' %>
+
+<%= render 'reports/sprint_release/sprint_release' %>
+
+<div id="js-save-button" class="btn btn-success"
+  style="position:fixed;top:10px;left:10px">
+  Save
+</div>

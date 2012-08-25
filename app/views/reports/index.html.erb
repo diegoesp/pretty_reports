@@ -1,0 +1,34 @@
+<div class="well">
+
+  <h1>Listing reports</h1>
+
+  <table class="table table-striped table-bordered table-condensed">
+    <tr>
+      <th>Id</th>
+      <th>Created</th>
+      <th>Title</th>
+      <th>Report Type</th>
+      <th>Actions</th>
+    </tr>
+
+  <% @reports.each do |report| %>
+    <tr>
+      <td><%= report.id %></td>
+      <td><%= report.created_at %></td>
+      <td><%= report.title %></td>
+      <td><%= report.report_type %></td>
+      <td>
+        <%= link_to 'Show', report %>,
+        <%= link_to 'Edit', edit_report_path(report) %>,
+        <%= link_to 'Destroy', report, method: :delete,
+          confirm: 'Are you sure?' %>
+
+      </td>
+    </tr>
+  <% end %>
+  </table>
+
+
+  <%= link_to 'New Report', new_report_path %>
+
+</div>

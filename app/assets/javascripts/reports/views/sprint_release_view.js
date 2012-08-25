@@ -18,6 +18,7 @@ app.reports.SprintReleaseView = Base.View.extend({
     this.itemsAttrs = options.itemsAttrs;
 
     this.bindTo(app.events, 'item:create', this._createAndRenderItem);
+    this.bindTo(app.events, 'item:remove', this._removeItem);
     this.bindTo(app.events, 'report:save', this._reportSave);
 
     this._initializeSortableLists();
@@ -69,6 +70,13 @@ app.reports.SprintReleaseView = Base.View.extend({
     }
   },
 
+  _removeItem: function(params) {
+    var itemModel = this.report.items.getByCid(params.model.cid);
+    this.report.items.remove(itemModel);
+    params.view.dispose();
+    this._updatePositionsAfterRemoving();
+  },
+
   _renderItem: function(list, itemModel) {
     var length = list.sortable('toArray').length;
     itemModel.set('position', length);
@@ -90,6 +98,19 @@ app.reports.SprintReleaseView = Base.View.extend({
       var model = collection.getByCid(id);
       model.set('position', index);
     });
+  },
+
+  _updatePositionsAfterRemoving: function() {
+    this._updatePositionsForIds(this.deliveredListEl.sortable('toArray'));
+    this._updatePositionsForIds(this.notFinishedListEl.sortable('toArray'));
+    this._updatePositionsForIds(this.knownIssuesListEl.sortable('toArray'));
+  },
+
+  _updatePositionsForIds: function(ids) {
+    _(ids).each(function(id, index){
+      var model = this.report.items.getByCid(id);
+      model.set('position', index);
+    }, this);
   }
 
 });

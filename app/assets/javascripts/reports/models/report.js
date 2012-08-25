@@ -11,7 +11,7 @@ app.reports.Report = Base.Model.extend({
   urlRoot: '/reports',
   items: null,
 
-  initialize: function() {
+  initialize: function(options) {
     this.items = new app.reports.Items();
   },
 
