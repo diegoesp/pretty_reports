@@ -6,6 +6,8 @@ PrettyReports::Application.routes.draw do
   devise_scope :user do get '/users/sign_out' => 'devise/sessions#destroy' end
 
   root to: "home#index"
+  match "/pdfkit", :to => "home#pdfkit"
+  match "/pdf", :to => "home#pdf"
 
   resources :reports do
     member do
