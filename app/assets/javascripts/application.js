@@ -16,6 +16,7 @@
 //= require modernizr
 //= require underscore
 //= require backbone
+//= require active_admin
 //
 //= require common
 //= require reports

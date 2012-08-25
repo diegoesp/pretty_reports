@@ -43,18 +43,3 @@ class Report < ActiveRecord::Base
   end
 
 end
-# == Schema Information
-#
-# Table name: reports
-#
-#  id          :integer         not null, primary key
-#  report_type :string(255)
-#  title       :string(255)
-#  subtitle    :string(255)
-#  content1    :string(255)
-#  content2    :string(255)
-#  content3    :string(255)
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
-#
-

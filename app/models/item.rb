@@ -9,18 +9,3 @@ class Item < ActiveRecord::Base
   end
 
 end
-# == Schema Information
-#
-# Table name: items
-#
-#  id         :integer         not null, primary key
-#  item_type  :string(255)
-#  section    :string(255)
-#  title      :string(255)
-#  subtitle   :text
-#  report_id  :integer
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  position   :integer
-#
-

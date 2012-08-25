@@ -6,6 +6,10 @@ class ReportsController < ApplicationController
     @reports = Report.order("created_at")
   end
 
+  def index
+    @reports = Report.order("created_at")
+  end
+
   def show
     @report = Report.find(params[:id])
     respond_to do |format|
@@ -70,5 +74,4 @@ class ReportsController < ApplicationController
       return
     end
   end
-
 end
