@@ -11,6 +11,7 @@ gem 'pg'
 gem 'jquery-ui-rails'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
+gem "pdfkit"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -29,6 +30,8 @@ end
 
 group :development do
   gem 'annotate', '2.4.1.beta1'
+  # For PDFKit tests
+  gem "unicorn"
 end
 
 # To use debugger
