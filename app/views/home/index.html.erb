@@ -6,7 +6,7 @@
 
 <% content_for :page_id do %>"homepage_index"<% end %>
 
-<%	
+<%
 	user = current_user
 	if user == nil
 		register = link_to "Registrate", :controller => "devise/registrations", :action => "new"
@@ -23,7 +23,7 @@
 	end
 %>
 <ul>
-	<li><%=link_to "Reports Demo", :controller => "reports", :action => "new"%></li>
+	<li><%=link_to "Reports Demo", :controller => "reports", :action => "index"%></li>
 	<li><%=link_to "Admin dashboard", :controller => "admin/dashboard", :action => "index"%></li>
 	<li><%=link_to "Registrarse", :controller => "devise/registrations", :action => "new"%></li>
 	<li><%=link_to "Ingresar", :controller => "devise/sessions", :action => "create"%></li>
