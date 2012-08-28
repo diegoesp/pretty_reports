@@ -11,6 +11,7 @@ gem 'pg'
 gem 'jquery-ui-rails'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
+gem "pdfkit"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,12 +25,20 @@ end
 
 group :test, :development do
   gem "rspec-rails"
-  gem 'sqlite3'
+  gem 'sqlite3'  
 end
 
 group :development do
   gem 'annotate', '2.4.1.beta1'
+  # For PDFKit tests
+  gem "unicorn"
 end
 
-# To use debugger
-# gem 'debugger'
+group :test do
+  gem 'capybara'                    # Driver for testing web apps and javascript via selenium
+  gem 'cucumber-rails'              # Allows to use cucumber DSL
+  gem 'launchy'                     # Launches the web browser via automation
+  gem 'database_cleaner'            # Resets database between tests
+  gem 'turn', :require => false     # Better formatted test reports
+  gem 'minitest'                    # Support for cucumber
+end 
