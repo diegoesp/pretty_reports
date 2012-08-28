@@ -41,14 +41,6 @@ ActiveRecord::Schema.define(:version => 20120820222829) do
 
   add_index "items", ["report_id"], :name => "index_items_on_report_id"
 
-  create_table "plans", :force => true do |t|
-    t.string   "name"
-    t.float    "cost"
-    t.boolean  "active"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "reports", :force => true do |t|
     t.string   "report_type"
     t.string   "title"
