@@ -32,13 +32,14 @@ group :development do
   gem 'annotate', '2.4.1.beta1'
   # For PDFKit tests
   gem "unicorn"
+  gem "hirb"            # Rails console beautifier: require "hirb" / Hirb.enable
 end
 
 group :test do
-  gem 'capybara'                    # Driver for testing web apps and javascript via selenium
-  gem 'cucumber-rails'              # Allows to use cucumber DSL
-  gem 'launchy'                     # Launches the web browser via automation
-  gem 'database_cleaner'            # Resets database between tests
-  gem 'turn', :require => false     # Better formatted test reports
-  gem 'minitest'                    # Support for cucumber
+  gem 'capybara'              # Driver for testing web apps and javascript via selenium
+  gem 'launchy'               # Launches the web browser via automation
+  gem 'database_cleaner'      # Resets database between tests
+  gem 'turn', :require => false             # Better formatted test reports
+  gem 'minitest'              # Support for cucumber  
+  gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL  
 end 

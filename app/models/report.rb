@@ -19,11 +19,12 @@ class Report < ActiveRecord::Base
 
   CONVERT_API_BASE_URL = 'http://do.convertapi.com/web2pdf?'
 
-  attr_accessible :title, :subtitle, :content1, :content2,
-    :content3, :report_type
+  attr_accessible :title, :subtitle, :content1, :content2, :content3, 
+    :report_type
 
-  has_many :items, order: "position ASC",
-    dependent: :delete_all
+  validates :report_type, :presence => true
+
+  has_many :items, order: "position ASC", dependent: :delete_all
 
   def file_url
     "#{Rails.root}/pdfs/#{self.id}.pdf"

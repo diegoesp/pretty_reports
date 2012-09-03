@@ -4,6 +4,6 @@ Feature: Log into the system
   register, sign in, sign out, recover password
 
   Scenario: User can sign in
-    Given I am user "admin@prettyreports.com" with an account
+    Given I am an admin user
     And I sign in
     Then I should see "Estas logeado como admin"
