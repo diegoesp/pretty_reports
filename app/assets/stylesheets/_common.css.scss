@@ -4,8 +4,10 @@
   }
 }
 
-// This works when you use it in additio with bootstrap btn class.
 .button {
+  // Get bootstrap button sugar and tune it to our own style.
+  @extend .btn;
+
   background: none;
   border: none;
   outline: none;
