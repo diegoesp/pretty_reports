@@ -3,3 +3,39 @@
     border: 2px solid red;
   }
 }
+
+// This works when you use it in additio with bootstrap btn class.
+.button {
+  background: none;
+  border: none;
+  outline: none;
+  @include border-radius(3px);
+  padding: 10px 6px 10px 6px;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.green-button {
+    color: white;
+    background-color: #9DC854;
+
+    &:hover {
+      background-color: #A5D15A;
+    }
+  }
+  &.blue-button {
+    color: white;
+    background-color: #63A0C8;
+    &:hover {
+      background-color: #7BB9E2;
+    }
+  }
+  &.gray-button {
+    color: black;
+    background-color: #DFDFDF;
+    &:hover {
+      background-color: #E6E6E6;
+    }
+  }
+}
