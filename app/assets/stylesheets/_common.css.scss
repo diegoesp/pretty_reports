@@ -40,4 +40,11 @@
       background-color: #E6E6E6;
     }
   }
+  &.black-button {
+    color: white;
+    background-color: #1E262E;
+    &:hover {
+      background-color: #3F4B57;
+    }
+  }
 }

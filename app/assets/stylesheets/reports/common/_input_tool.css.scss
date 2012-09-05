@@ -1,0 +1,56 @@
+#reports-new-page, #reports-edit-page {
+
+  .input-tool-container-wrapper {
+    position: fixed;
+    z-index: 100;
+    top: 77px;
+    background-color: white;
+    @include box-shadow(0px 0px 11px 1px rgba(0, 0, 0, 0.40));
+    width: 100%;
+
+    .input-tool-container {
+      position: relative;
+      width: 940px;
+      height: 132px;
+      margin: auto;
+      padding-top: 10px;
+
+      form {
+        position: relative;
+      }
+      .add-button {
+        position: absolute;
+        width: 150px;
+        bottom: 10px;
+        right: 0px;
+      }
+      .trash-button {
+        position: absolute;
+        bottom: 10px;
+        right: -50px;
+      }
+
+      input {
+        color: #212B33;
+        font-size: 15px;
+        outline: none;
+        border: 1px solid #D5D5D5;
+        @include box-shadow(0 0 0 0 #000000);
+        @include border-radius(2px);
+        padding: 8px;
+        padding-left: 10px;
+        margin-bottom: 5px;
+      }
+
+      input.title, input.subtitle {
+        width: 922px;
+      }
+
+      select {
+        height: 38px;
+        width: 272px;
+      }
+
+    }
+  }
+}

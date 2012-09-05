@@ -2,5 +2,9 @@
   background: image-url('bg-pattern.png');
   padding-top: 100px;
 
-
+  .container {
+    @include border-radius(0px);
+    background-color: white;
+    border: 1px solid #C5C5C7;
+  }
 }
