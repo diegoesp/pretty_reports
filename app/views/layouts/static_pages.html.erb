@@ -13,10 +13,6 @@
 
   <body <%= "id='#{yield :page_id}'"  %> >
 
-    <header id="page-header" class="js-page-header">
-      <%= render 'layouts/header' %>
-    </header>
-
     <% flash.each do |key, value| %>
       <%
         alert_class = case key
@@ -33,17 +29,9 @@
       <% end %>
     <% end %>
 
-    <section id="page-content">
-      <%= yield %>
-    </section>
 
-
-    <section id="page-footer">
-    </section>
-
-    <div id="ajax-loading-indicator" class="alert alert-success hide">
-      Loading...
-    </div>
+    <%= yield %>
 
   </body>
+
 </html>

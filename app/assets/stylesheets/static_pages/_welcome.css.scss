@@ -1,0 +1,53 @@
+
+#welcome-page {
+
+  header {
+    height: 80px;
+    background-color: #F3F3F6;
+    position: relative;
+
+    .logo {
+      position: relative;
+      width: 115px;
+      height: 60px;
+      margin: auto;
+      top: 10px;
+      background-image: image-url('logo.png');
+      background-repeat: no-repeat;
+    }
+
+    .buttons-container {
+      width: 156px;
+      position: relative;
+      margin: auto;
+      left: 274px;
+      top: -32px;
+
+      .button {
+        width: 63px;
+      }
+    }
+
+  }
+
+  section.banner {
+    height: 352px;
+    background-color: #63A0C8;
+    background-image: image-url('home-banner.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  section.how-it-works {
+    height: 168px;
+    background: image-url('how-it-works.png') no-repeat center;
+    background-color: #F3F3F6;
+  }
+
+  section.footer {
+    height: 511px;
+    background: image-url('footer.png') no-repeat center;
+    background-color: #F3F3F6;
+  }
+
+}
