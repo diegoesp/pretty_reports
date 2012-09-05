@@ -1,50 +1,66 @@
 .sprint-release-report {
   margin: auto;
-  @include box-shadow(0 0 50px 0.1px hsla(0, 0%, 0%, 0.40));
-  @include border-radius(8px);
+  border: 1px solid #C5C5C7;
+
   background-color: white;
   padding: 10px;
   width: 940px;
   color: gray;
   font-family: helvetica;
 
-  ul {
-    list-style: none;
+  h1 {
+    color: black;
+    font-weight: normal;
+  }
 
+  h3 {
+    color: #68A4D2;
+    font-weight: normal;
+  }
+
+  ul {
+    padding: 0px;
+    list-style: none;
     li {
       cursor: move;
     }
   }
 
-  ul.delivered {
-
+  ul.known-issues li:last-child {
     .item {
-      margin-bottom: 3px;
-      @extend .alert;
-      @extend .alert-success;
-    }
-  }
-
-  ul.not-finished {
-
-    .item {
-      margin-bottom: 3px;
-      @extend .alert;
-      @extend .alert-info;
-    }
-  }
-
-  ul.known-issues {
-
-    .item {
-      margin-bottom: 3px;
-      @extend .alert;
-      @extend .alert-error;
+      border-bottom: none;
     }
   }
 
   .item {
+    color: #504737;
     position: relative;
+    height: 50px;
+    border-bottom: 1px solid #CCCCCC;
+
+    .icon {
+      width: 30px;
+      height: 30px;
+      float: left;
+      margin-top: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      background: image-url('issue-feature-icon.png') 0px -5px no-repeat;
+    }
+
+    .title, .subtitle {
+      display: block;
+      float: left;
+      margin-top: 10px;
+    }
+
+    .title {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .subtitle {
+      color: #817E79;
+    }
 
     .remove {
       cursor: pointer;

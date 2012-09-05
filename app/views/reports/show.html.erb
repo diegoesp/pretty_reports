@@ -9,6 +9,8 @@
   </script>
 <% end %>
 
+<% provide(:page_id, "reports-show-page") %>
+
 <% if @report.report_type == 'sprint-definition' %>
   <%= render 'reports/sprint_definition/sprint_definition',
     locals: {report: @report} %>
