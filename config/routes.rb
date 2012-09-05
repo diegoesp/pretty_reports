@@ -8,7 +8,7 @@ PrettyReports::Application.routes.draw do
   root to: "home#index"
 
   get '/static-pages/about-us' => 'static_pages#about_us'
-  get '/static-pages/welcome' => 'static_pages#welcome'
+  get '/static-pages/welcome' => 'static_pages#welcome', as: 'welcome_page'
 
   resources :reports do
     member do

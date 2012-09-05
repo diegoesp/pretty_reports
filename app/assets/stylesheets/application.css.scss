@@ -19,10 +19,12 @@
 @import "reports/common_reports";
 @import "reports/input_tool";
 @import "reports/sprint_release";
+@import "reports/index";
 
 @import "layouts/header";
 
 @import "static_pages/welcome";
 @import "static_pages/sign_up";
+@import "static_pages/sign_in";
 
 @import "home/home";

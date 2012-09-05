@@ -1,17 +1,27 @@
-<h2>Sign in</h2>
+<% provide(:title, 'Sign in') %>
+<% provide(:page_id, "sign-in-page") %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+<div class="logo" onclick="window.location='<%= welcome_page_url %>'"></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+<div class="sign-in-box">
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+  <%= form_for(resource, :as => resource_name,
+    :url => session_path(resource_name)) do |f| %>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+    <legend>Login</legend>
 
-<%= render "devise/shared/links" %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <% if devise_mapping.rememberable? -%>
+      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    <% end -%>
+
+    <%= f.submit "Sign in", class: "button green-button" %>
+
+  <% end %>
+
+</div>

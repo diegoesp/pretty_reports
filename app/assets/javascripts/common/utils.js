@@ -7,8 +7,6 @@ _.templateSettings = {
 // Defining a namespace for all the javascript of the application.
 window.app = {};
 
-// Defining a namespace for Widgets helpers.
-app.widgets = {}
 
 // Custom logger for common console panel (Chrome + Safari + Mozilla.
 // Not tested on other browsers, however this method will not fail
@@ -36,3 +34,4 @@ $(function() {
     $(this).hide()
   });
 });
+

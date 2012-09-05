@@ -13,21 +13,22 @@
 
   <body <%= "id='#{yield :page_id}'"  %> >
 
-    <%# Active admin notifications %>
-    <%
-    if notice != nil
-    %>
-      <p class="notice"><%= notice %></p>
-    <%
-    end
+    <% flash.each do |key, value| %>
+      <%
+        alert_class = case key
+        when :alert then 'alert-error'
+        when :notice then 'alert-success'
+        else ''
+        end
+      %>
+      <% unless value.blank? %>
+        <div class="alert <%= alert_class %>">
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          <%= value %>
+        </div>
+      <% end %>
+    <% end %>
 
-    if alert != nil
-    %>
-      <p class="alert"><%= alert %></p>
-    <%
-    end
-    %>
-    <%# Active admin notifications end %>
 
     <%= yield %>
 
