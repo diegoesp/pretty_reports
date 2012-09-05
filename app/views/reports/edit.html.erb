@@ -9,9 +9,8 @@
   </script>
 <% end %>
 
-<% content_for :page_id do %>
-  "reports-new"
-<% end %>
+<% provide(:page_id, "reports-edit-page") %>
+
 
 <%= render 'reports/common/input_tool' %>
 

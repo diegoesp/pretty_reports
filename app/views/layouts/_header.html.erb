@@ -1,0 +1,19 @@
+<div class="top-bar">
+  <div class="logo"
+    onclick="window.location='<%= root_url %>'"></div>
+
+  <div class="user-menu dropdown">
+    <i class=" icon-chevron-down icon-white"></i>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rafael Chiti</a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+      <li><a tabindex="-1" href="<%= reports_url %>">My Reports</a></li>
+      <li class="divider"></li>
+      <li><a tabindex="-1" href="#">Something Else</a></li>
+    </ul>
+  </div>
+
+
+  <%=link_to "", {controller: "devise/sessions", action: "destroy"},
+    class: "logout"%>
+
+</div>

@@ -1,0 +1,67 @@
+#sign-in-page {
+  background: image-url('bg-pattern.png');
+
+  .logo {
+    background: image-url('logo.png');
+    width: 128px;
+    height: 62px;
+    margin: auto;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .sign-in-box {
+    width: 322px;
+    margin: auto;
+    margin-top: 32px;
+    border: 1px solid #D2D7D8;
+    background-color: white;
+    margin-bottom: 100px;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 40px;
+  }
+
+  .alert {
+    width: 50%;
+    margin: auto;
+    margin-top: 4px;
+  }
+
+  form {
+    position: relative;
+
+    legend {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-size: 12px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type=text], input[type=email], input[type=password] {
+      margin-bottom: 15px;
+      width: 100%;
+      outline: none;
+      boder-style: none;
+      @include border-radius(0);
+      border: 1px solid #D2D7D8;
+      height: 23px;
+      background: image-url('bg-pattern.png');
+      font-size: 15px;
+      padding-left: 10px;
+    }
+
+    .button {
+      margin-top: 5px;
+      width: 100px;
+      display: block;
+    }
+  }
+
+
+}

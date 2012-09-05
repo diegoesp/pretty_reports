@@ -1,32 +1,23 @@
-<% content_for :head do %>
-  <script type="text/javascript">
-  // Put any startup javascript code here
-  </script>
-<% end %>
+<% provide(:title, 'Home') %>
+<% provide(:page_id, "home-page") %>
 
-<% content_for :page_id do %>"homepage_index"<% end %>
+<div class="container">
 
-<%
-	user = current_user
-	if user == nil
-		register = link_to "Registrate", :controller => "devise/registrations", :action => "new"
-		login = link_to "Logeate", :controller => "devise/sessions", :action => "create"
-		forgot = link_to "Regenera tu password", :controller => "devise/passwords", :action => "new"
-		%>
-		<%="No estas logeado en pretty reports! por favor #{register}, #{login.html_safe} o #{forgot}".html_safe%>
-		<%
-	else
-		logout = link_to "Deslogearte", :controller => "devise/sessions", :action => "destroy"
-		%>
-		<%="Estas logeado como #{user.email}. Podes #{logout}".html_safe%>
-		<%
-	end
-%>
-<ul>
-	<li><%=link_to "Reports Demo", :controller => "reports", :action => "index"%></li>
-	<li><%=link_to "Admin dashboard", :controller => "admin/dashboard", :action => "index"%></li>
-	<li><%=link_to "Registrarse", :controller => "devise/registrations", :action => "new"%></li>
-	<li><%=link_to "Ingresar", :controller => "devise/sessions", :action => "create"%></li>
-	<li><%=link_to "Salir", :controller => "devise/sessions", :action => "destroy"%></li>
-	<li><%=link_to "Olvide mi password", :controller => "devise/passwords", :action => "new"%></li>
-</ul>
+  <h1>Welcome back, Rafa!</h1>
+  <h3>Lorem ipsum is simply dummy text of the
+    printing and type setting industry.</h3>
+
+  <div class="reports-link-container">
+
+    <div class="sprint-definition-link"
+      onclick="window.location='<%= new_report_path %>'"></div>
+
+    <div class="sprint-release-link"
+      onclick="window.location='<%= new_report_path %>'"></div>
+
+    <div class="daily-email-link"
+      onclick="window.location='<%= new_report_path %>'"></div>
+
+  </div>
+
+</div>
