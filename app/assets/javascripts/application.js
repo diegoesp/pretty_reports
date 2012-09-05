@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.sortable
 //= require modernizr
-//= require bootstrap-alert
+//= require bootstrap
 //= require underscore
 //= require backbone
 //= require active_admin

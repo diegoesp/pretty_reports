@@ -3,14 +3,12 @@
 
 <% errors = devise_error_messages_without_title %>
 <% if (errors.size > 0) %>
-
   <div class="alert alert-error">
-  <a class="close" data-dismiss="alert" href="#">×</a>
-  <% errors.each do |message| %>
-    <%= message %><br>
-  <% end %>
+    <button class="close" data-dismiss="alert">&times;</button>
+    <% errors.each do |message| %>
+      <%= message %><br>
+    <% end %>
   </div>
-
 <% end %>
 
 <div class="logo"></div>
