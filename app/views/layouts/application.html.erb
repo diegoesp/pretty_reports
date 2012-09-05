@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <title>PrettyReports</title>
+    <title><%= yield(:title) %></title>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -13,24 +13,37 @@
 
   <body <%= "id='#{yield :page_id}'"  %> >
 
-    <%# Active admin notifications %>
-    <%
-    if notice != nil
-    %>
-      <p class="notice"><%= notice %></p>
-    <%
-    end
+    <header id="page-header" class="js-page-header">
+      <%= render 'layouts/header' %>
+    </header>
 
-    if alert != nil
-    %>
-      <p class="alert"><%= alert %></p>
-    <%
-    end
-    %>
-    <%# Active admin notifications end %>
+    <% flash.each do |key, value| %>
+      <%
+        alert_class = case key
+        when :alert then 'alert-error'
+        when :notice then 'alert-success'
+        else ''
+        end
+      %>
+      <% unless value.blank? %>
+        <div class="alert <%= alert_class %>">
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          <%= value %>
+        </div>
+      <% end %>
+    <% end %>
 
-    <%= yield %>
+    <section id="page-content">
+      <%= yield %>
+    </section>
+
+
+    <section id="page-footer">
+    </section>
+
+    <div id="ajax-loading-indicator" class="alert alert-success hide">
+      Loading...
+    </div>
 
   </body>
-
 </html>

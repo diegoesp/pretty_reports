@@ -1,0 +1,40 @@
+#page-header {
+
+  .top-bar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 76px;
+    background-color: #1E262E;
+
+    .logo {
+      background: image-url('logo-black.png');
+      width: 100px;
+      height: 60px;
+      margin-left: 100px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .user-menu {
+      width: 148px;
+      height: 26px;
+      position: absolute;
+      right: 91px;
+      top: 35px;
+      color: white;
+    }
+
+    .logout {
+      background: image-url('logout.png');
+      width: 38px;
+      height: 34px;
+      cursor: pointer;
+      position: absolute;
+      right: 100px;
+      top: 25px;
+      border-left: 1px solid #2F3840;
+    }
+  }
+
+}

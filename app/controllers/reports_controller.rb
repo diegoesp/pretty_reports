@@ -2,6 +2,8 @@ require 'net/http'
 
 class ReportsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   def index
     @reports = Report.order("created_at")
   end
