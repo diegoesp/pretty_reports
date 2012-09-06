@@ -39,10 +39,6 @@ Given /^I create a sprint release report$/ do
     :position => 0)
 end
 
-Given /^I ask to create the sprint release report$/ do
-  visit "/reports/" + @report.id.to_s + "/download"
-end
-
 When /^I download the sprint release report$/ do
   visit "/reports/" + @report.id.to_s + "?format=pdf"
 end

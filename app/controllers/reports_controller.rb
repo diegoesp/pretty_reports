@@ -11,7 +11,8 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        send_file @report.file_url
+        pdf = Report.as_pdf(report_path(@report))
+        send_data pdf
       end
     end
   end
@@ -51,23 +52,5 @@ class ReportsController < ApplicationController
     @report.destroy
 
     redirect_to reports_url
-  end
-
-  def download
-    @report = Report.find(params[:id])
-
-    if (@report.dirty?)
-      @report.dirty = false
-      @report.save
-      @report.generate_pdf(report_url(@report))
-    end
-
-    if (@report.generating?)
-      render json: {message: 'Not yet', code: '100'}
-      return
-    else
-      render json: {message: 'Download ready', code: '101'}
-      return
-    end
   end
 end
