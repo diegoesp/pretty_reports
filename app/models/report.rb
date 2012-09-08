@@ -11,8 +11,6 @@
 #  content3    :string(255)
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
-#  generating  :boolean         default(FALSE)
-#  dirty       :boolean         default(FALSE)
 #
 
 class Report < ActiveRecord::Base
@@ -23,12 +21,7 @@ class Report < ActiveRecord::Base
     :report_type
 
   validates :report_type, :presence => true
-
   has_many :items, order: "position ASC", dependent: :delete_all
-
-  def file_url
-    "#{Rails.root}/pdfs/#{self.id}.pdf"
-  end
 
   def as_json(options={})
     result = super(
@@ -37,27 +30,12 @@ class Report < ActiveRecord::Base
     result
   end
 
-  def generate_pdf(report_url)
-    self.generating = true
-    self.save
-
-    Thread.new do
-      begin
-        report_url = report_url.sub('http://', 'http://user:lacasadelarte@')
-        url = "#{CONVERT_API_BASE_URL}curl=#{report_url}"
-        logger.info(">>>>>>> Generating for url: #{url}")
-        resp = Net::HTTP.get_response(URI.parse(url))
-        logger.debug(resp.code)
-        File.open(self.file_url, 'wb') do |f|
-          f.write resp.body
-        end
-        self.generating = false
-        self.save
-      rescue Exception => e
-        logger.error(e)
-      end
-    end
-
+  # Takes the REST URL for a report and transforms it into a printable PDF
+  # @pram url REST URL to reach the report
+  # @returns printable PDF binary object
+  def self.as_pdf(url)
+    @kit = PDFKit.new(url, "use-xserver" => "--quiet")
+    @kit.to_pdf  
   end
 
 end
