@@ -1,0 +1,33 @@
+#home-page {
+  padding-top: 90px;
+  background: image-url('bg-pattern.png');
+
+  h1, h2, h3 {
+    text-align: center;
+  }
+
+  .reports-link-container {
+    margin: auto;
+    width: 789px;
+
+    div {
+      width: 239px;
+      height: 231px;
+      float: left;
+      margin-right: 20px;
+      cursor: pointer;
+
+      &.sprint-definition-link {
+        background: image-url('sprint-definition-button.png');
+      }
+      &.sprint-release-link {
+        background: image-url('sprint-release-button.png');
+      }
+      &.daily-email-link {
+        background: image-url('daily-email-button.png');
+      }
+    }
+
+  }
+
+}

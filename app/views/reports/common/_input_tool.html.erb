@@ -2,32 +2,26 @@
 <div class="input-tool-container-wrapper">
   <div class="js-input-tool input-tool-container">
 
-
     <form>
-      <label>Title:
-        <input type="text" name="title" value="As a User I want...">
-        </input>
-      </label>
-      <label>Subtitle:
-        <input type="text" name="subtitle"
-          value="Add some functionality..."></input>
-      </label>
-      <label>Section:
-        <select name="section">
-          <option value="delivered">Delivered</option>
-          <option value="not-finished">Not Finished</option>
-          <option value="known-issue">Known Issue</option>
-        </select>
-      </label>
 
+      <input type="text" class="title" name="title"
+        placeholder="As a User I want..."></input>
+
+      <input type="text" name="subtitle"
+        placeholder="Add some functionality..." class="subtitle"></input>
+
+      <select name="section">
+        <option value="delivered">Delivered</option>
+        <option value="not-finished">Not Finished</option>
+        <option value="known-issue">Known Issue</option>
+      </select>
 
     </form>
 
-    <a class="js-add-button add-button btn btn-success">
-      <i class="icon-plus icon-white"></i>
-      Add
+    <a class="js-add-button add-button button black-button">
+      <i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add
     </a>
-    <a class="js-trash-button trash-button btn btn-danger">
+    <a class="js-trash-button trash-button button blue-button">
       <i class="icon-trash icon-white"></i>
     </a>
 

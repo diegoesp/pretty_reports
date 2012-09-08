@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title><%= yield(:title) %></title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+    <%= yield :head %>
+
+  </head>
+
+  <body <%= "id='#{yield :page_id}'"  %> >
+
+    <% flash.each do |key, value| %>
+      <%
+        alert_class = case key
+        when :alert then 'alert-error'
+        when :notice then 'alert-success'
+        else ''
+        end
+      %>
+      <% unless value.blank? %>
+        <div class="alert <%= alert_class %>">
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          <%= value %>
+        </div>
+      <% end %>
+    <% end %>
+
+
+    <%= yield %>
+
+  </body>
+
+</html>
