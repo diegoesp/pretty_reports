@@ -49,13 +49,13 @@ PrettyReports::Application.configure do
   # }
 
   # Start a remote debugger. To connect use $ bundle exec rdebug -c
-  unless $rails_rake_task
-    require 'debugger'
+  # unless $rails_rake_task
+  #   require 'debugger'
 
-    Debugger.settings[:autoeval] = true
-    Debugger.settings[:autolist] = 1
-    Debugger.settings[:reload_source_on_change] = true
-    Debugger.start_remote
-  end
+  #   Debugger.settings[:autoeval] = true
+  #   Debugger.settings[:autolist] = 1
+  #   Debugger.settings[:reload_source_on_change] = true
+  #   Debugger.start_remote
+  # end
 
 end
