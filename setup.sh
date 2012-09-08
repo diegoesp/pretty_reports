@@ -1,12 +1,14 @@
-echo "# 1 / 6: Dropping tables"
+echo "# 1 / 7: Dropping tables"
 bundle exec rake db:drop
-echo "# 2 / 6: Migrating tables"
+echo "# 2 / 7: Migrating tables"
 bundle exec rake -v db:migrate
-echo "# 3 / 6: Preparing test database"
+echo "# 3 / 7: Preparing test database"
 bundle exec rake -v db:test:prepare
-echo "# 4 / 6: Annotate model"
+echo "# 4 / 7: Annotate model"
 bundle exec annotate --position before
-echo "# 5 / 6: Seeding tables"
+echo "# 5 / 7: Seeding tables"
 bundle exec rake db:seed
-echo "# 6 / 6: Running tests"
+echo "# 6 / 7: Running rspec tests"
 bundle exec rspec spec
+echo "# 7 / 7: Running cucumber tests"
+bundle exec rake cucumber
