@@ -1,0 +1,17 @@
+#reports-new-page {
+  margin-top: 250px;
+  background-image: image-url('bg-pattern.png');
+  padding-bottom: 100px;
+}
+
+#reports-edit-page {
+  padding-top: 250px;
+  background: image-url('bg-pattern.png');
+}
+
+#reports-show-page {
+  padding-top: 20px;
+  #page-header {
+    display: none;
+  }
+}

@@ -1,0 +1,26 @@
+<% provide(:title, 'Welcome!') %>
+<% provide(:page_id, "welcome-page") %>
+
+<header>
+  <div class="logo"></div>
+
+  <div class="buttons-container">
+    <%= link_to "Sign Up",
+      {controller: 'devise/registrations', action: 'new'},
+      :class => 'button green-button' %>
+
+    <%= link_to "Login",
+      {controller: 'devise/sessions', action: 'new'},
+      :class => 'button blue-button' %>
+  </div>
+
+</header>
+
+<section class="banner">
+</section>
+
+<section class="how-it-works">
+</section>
+
+<section class="footer">
+</section>
