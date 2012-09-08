@@ -38,13 +38,24 @@ PrettyReports::Application.configure do
   # (activeadmin) Configuration for mailer
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   # Config for GMail
-  # ActionMailer::Base.smtp_settings = {  
-  # :address              => "smtp.gmail.com",  
-  # :port                 => 587,  
-  # :domain               => "gmail.com",  
+  # ActionMailer::Base.smtp_settings = {
+  # :address              => "smtp.gmail.com",
+  # :port                 => 587,
+  # :domain               => "gmail.com",
   # :user_name            => "xxx@gmail.com",
-  # :password             => "password",  
+  # :password             => "password",
   # :authentication       => "plain",
-  # :enable_starttls_auto => true # I don't have this, but it should work anyway 
-  # } 
+  # :enable_starttls_auto => true # I don't have this, but it should work anyway
+  # }
+
+  # Start a remote debugger. To connect use $ bundle exec rdebug -c
+  # unless $rails_rake_task
+  #   require 'debugger'
+
+  #   Debugger.settings[:autoeval] = true
+  #   Debugger.settings[:autolist] = 1
+  #   Debugger.settings[:reload_source_on_change] = true
+  #   Debugger.start_remote
+  # end
+
 end
