@@ -25,7 +25,7 @@ end
 
 group :test, :development do
   gem "rspec-rails"
-  gem 'sqlite3'  
+  gem 'sqlite3'
 end
 
 group :development do
@@ -33,6 +33,7 @@ group :development do
   # For PDFKit tests
   gem "unicorn"
   gem "hirb"            # Rails console beautifier: require "hirb" / Hirb.enable
+  gem "debugger"
 end
 
 group :test do
@@ -40,6 +41,6 @@ group :test do
   gem 'launchy'               # Launches the web browser via automation
   gem 'database_cleaner'      # Resets database between tests
   gem 'turn', :require => false             # Better formatted test reports
-  gem 'minitest'              # Support for cucumber  
-  gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL  
-end 
+  gem 'minitest'              # Support for cucumber
+  gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL
+end
