@@ -17,7 +17,8 @@ app.reports.InputToolView = Base.View.extend({
     var itemAttr = {
       title: this.$('[name="title"]').val(),
       subtitle: this.$('[name="subtitle"]').val(),
-      section: this.$('[name="section"]').val()
+      section: this.$('[name="section"]').val(),
+      item_type: this.$('[name="item-type"]').val()
     }
 
     app.events.trigger('item:create', itemAttr);
