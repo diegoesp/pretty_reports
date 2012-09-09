@@ -6,4 +6,4 @@ Feature: Log into the system
   Scenario: User can sign in
     Given I am an admin user
     And I sign in
-    Then I should see "Estas logeado como admin"
+    Then I should see "Welcome back"
