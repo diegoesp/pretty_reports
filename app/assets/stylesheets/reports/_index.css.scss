@@ -1,10 +1,74 @@
 #my-reports-page {
   background: image-url('bg-pattern.png');
-  padding-top: 100px;
+  padding-top: 180px;
+
+  .top-toolbar-wrapper {
+    position: fixed;
+    z-index: 100;
+    top: 77px;
+    background-color: white;
+    @include box-shadow(0px 0px 11px 1px rgba(0, 0, 0, 0.40));
+    width: 100%;
+
+    .top-toolbar {
+      position: relative;
+      width: 940px;
+      height: 60px;
+      margin: auto;
+      padding-top: 10px;
+
+      .new-button {
+        width: 100px;
+        position: absolute;
+        right: 0px;
+        bottom: 10px;
+      }
+    }
+  }
 
   .container {
-    @include border-radius(0px);
-    background-color: white;
-    border: 1px solid #C5C5C7;
+    width: 940px;
+
+    .custom-table {
+      @include box-shadow(0px 0px 5px 2px rgba(232, 232, 234, 1));
+      color: #4E452C;
+      border-collapse: separate;
+      @include border-radius(6px);
+      border: 1px solid #CACACC;
+      overflow: hidden;
+      width: 100%;
+
+      td, th{
+        text-align: left;
+        padding: 15px;
+      }
+      tbody {
+        td {
+          border-top: 1px solid #D5D5D5;
+        }
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: #F1F1F1;
+      }
+      tbody tr:nth-child(even) {
+        background-color: white;
+      }
+
+      tbody tr:hover {
+        background-color: #FDF9C8;
+      }
+      thead {
+        th {
+          padding-bottom: 8px;
+          padding-top: 8px;
+          height: 10px;
+          color: #808183;
+          background-color: #E6E7E9;
+        }
+      }
+    }
+
   }
+
 }
