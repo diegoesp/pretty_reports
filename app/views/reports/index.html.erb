@@ -1,37 +1,45 @@
 <% provide(:title, 'My Reports') %>
 <% provide(:page_id, "my-reports-page") %>
 
-<div class="container well">
+<div class="top-toolbar-wrapper">
+  <div class="top-toolbar">
 
-  <h1>Listing reports</h1>
+    <a type="button" onclick="window.location='<%= root_path %>'"
+      class="button black-button js-new-button new-button" value="New">
 
-  <table class="table table-striped table-bordered table-condensed">
-    <tr>
-      <th>Id</th>
-      <th>Created</th>
-      <th>Title</th>
-      <th>Report Type</th>
-      <th>Actions</th>
-    </tr>
+      <i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;New
+    </a>
 
-  <% @reports.each do |report| %>
-    <tr>
-      <td><%= report.id %></td>
-      <td><%= report.created_at %></td>
-      <td><%= report.title %></td>
-      <td><%= report.report_type %></td>
-      <td>
-        <%= link_to 'Show', report %>,
-        <%= link_to 'Edit', edit_report_path(report) %>,
-        <%= link_to 'Destroy', report, method: :delete,
-          confirm: 'Are you sure?' %>
+  </div>
+</div>
 
-      </td>
-    </tr>
-  <% end %>
+<div class="container">
+
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Report Type</th>
+        <th>Created</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <td><%= report.title %></td>
+          <td><%= report.report_type %></td>
+          <td><%= report.created_at %></td>
+          <td>
+            <%= link_to 'Show', report %>,
+            <%= link_to 'Edit', edit_report_path(report) %>,
+            <%= link_to 'Destroy', report, method: :delete,
+              confirm: 'Are you sure?' %>
+
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
-
-
-  <%= link_to 'New Report', new_report_path %>
 
 </div>
