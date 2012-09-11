@@ -1,0 +1,27 @@
+#reports-edit-page, #reports-new-page {
+
+  .download-button {
+    position:fixed;
+    top:37px;
+    right:280px;
+    z-index:102;
+    cursor:pointer;
+  }
+  .save-button {
+    position:fixed;
+    top:37px;
+    right:300px;
+    z-index:102;
+    cursor:pointer;
+  }
+}
+
+#reports-edit-page.scrolled-style, #reports-new-page.scrolled-style {
+  .download-button {
+    top: 10px;
+  }
+  .save-button {
+    top: 10px;
+  }
+}
+

@@ -26,6 +26,6 @@ app.reports.InputToolView = Base.View.extend({
 
   _trashButtonClicked: function() {
     this.$('input').val('');
-  }
+  },
 
 });

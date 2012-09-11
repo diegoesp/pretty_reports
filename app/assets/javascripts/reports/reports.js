@@ -1,5 +1,7 @@
 app.reports = {
 
+  scrollAwareEl: null,
+
   initialize: function(options) {
 
     // If the page has been instantiated with an undefined report then
@@ -8,6 +10,8 @@ app.reports = {
     if (!options.report ) {
       options.report = {};
     }
+
+    this.scrollAwareEl = $('.scroll-aware');
 
     $('.js-save-button').on('click', function(event){
       app.events.trigger('report:save:clicked');
@@ -41,6 +45,26 @@ app.reports = {
 
     _.each(this.views, function (view) { view.render(); });
 
+    this._initializeScrollSpy();
+  },
+
+  _initializeScrollSpy: function() {
+    var that = this;
+    $(window).scroll(function(){
+      that._mainScrollChanged();
+    });
+  },
+
+  _mainScrollChanged: function() {
+    if ($(window).scrollTop() >= 16) {
+      if (!this.scrollAwareEl.hasClass('scrolled-style')) {
+        this.scrollAwareEl.addClass('scrolled-style');
+      }
+    } else {
+      if (this.scrollAwareEl.hasClass('scrolled-style')) {
+        this.scrollAwareEl.removeClass('scrolled-style');
+      }
+    }
   }
 
 }

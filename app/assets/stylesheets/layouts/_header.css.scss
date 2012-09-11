@@ -39,3 +39,20 @@
   }
 
 }
+
+// When showing it smaller
+.scrolled-style {
+  #page-header .top-bar{
+    height: 34px;
+    @include box-shadow(0px 0px 11px 1px rgba(0, 0, 0, 0.20));
+    .logo {
+      display: none;
+    }
+    .user-menu {
+      top: 10px;
+    }
+    .logout {
+      top: 0px;
+    }
+  }
+}
