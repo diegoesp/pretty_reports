@@ -13,9 +13,11 @@
 @import "bourbon";
 @import "bootstrap";
 @import "normalize";
-@import "custom_mixins";
 
-@import "common";
+@import "common/custom_mixins";
+@import "common/common";
+@import "common/buttons";
+
 @import "reports/common/common_reports";
 @import "reports/common/input_tool";
 @import "reports/sprint_release";

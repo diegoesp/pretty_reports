@@ -1,0 +1,13 @@
+.styled-select {
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid #D5D5D5;
+  color: #212B33;
+  font-size: 15px;
+  @include box-shadow(0 0 0 0 #000000);
+  @include border-radius(2px);
+  padding: 8px;
+  padding-left: 10px;
+  background: image-url("select-arrow.png") 96% 50% no-repeat;
+  cursor: pointer;
+}

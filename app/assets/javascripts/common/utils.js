@@ -35,3 +35,7 @@ $(function() {
   });
 });
 
+// Initialize the styled selects
+$(document).ready(function() {
+  jQuery('select.custom-select').styledSelect({innerClass: 'styled-select'})
+});
