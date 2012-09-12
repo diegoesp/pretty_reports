@@ -4,10 +4,15 @@
 <div class="top-toolbar-wrapper">
   <div class="top-toolbar">
 
-    <a type="button" onclick="window.location='<%= root_path %>'"
-      class="button black-button js-new-button new-button" value="New">
+    <a type="button" onclick="window.location='<%= new_report_path %>'"
+      class="button blue-button js-new-button" value="New">
 
-      <i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;New
+      <i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;New Sprint Release
+    </a>
+    <a type="button" onclick="window.location='<%= new_report_path %>'"
+      class="button blue-button js-new-button" value="New">
+
+      <i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;New Sprint Definition
     </a>
 
   </div>
@@ -27,14 +32,13 @@
     <tbody>
       <% @reports.each do |report| %>
         <tr>
-          <td><%= report.title %></td>
-          <td><%= report.report_type %></td>
-          <td><%= report.created_at %></td>
+          <td><%= link_to report.title, report_path(report) %></td>
+          <td><%= human_report_type report.report_type %></td>
+          <td><%= time_ago_in_words report.created_at %> ago</td>
           <td>
-            <%= link_to 'Show', report %>,
-            <%= link_to 'Edit', edit_report_path(report) %>,
-            <%= link_to 'Destroy', report, method: :delete,
-              confirm: 'Are you sure?' %>
+            <%= link_to '', edit_report_path(report) , class: 'edit-icon' %>
+            <%= link_to '', report, method: :delete,
+              confirm: 'Are you sure?', class: 'delete-icon' %>
 
           </td>
         </tr>

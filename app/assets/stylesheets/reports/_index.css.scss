@@ -17,11 +17,8 @@
       margin: auto;
       padding-top: 10px;
 
-      .new-button {
-        width: 100px;
-        position: absolute;
-        right: 0px;
-        bottom: 10px;
+      a {
+        margin-top: 5px;
       }
     }
   }
@@ -38,6 +35,31 @@
       overflow: hidden;
       width: 100%;
 
+      a {
+        color: #4E452C;
+        &:visited {
+          color: #4E452C;
+        }
+      }
+
+      td {
+        .edit-icon {
+          display: inline-block;
+          background: image-url("main-sprites.png") -249px 2px no-repeat;
+          width: 28px;
+          height: 20px;
+          cursor: pointer;
+        }
+        .delete-icon {
+          margin-left: 10px;
+          display: inline-block;
+          background: image-url("main-sprites.png") -230px 2px no-repeat;
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+
+        }
+      }
       td, th{
         text-align: left;
         padding: 15px;
@@ -48,10 +70,10 @@
         }
       }
 
-      tbody tr:nth-child(odd) {
+      tbody tr:nth-child(even) {
         background-color: #F1F1F1;
       }
-      tbody tr:nth-child(even) {
+      tbody tr:nth-child(odd) {
         background-color: white;
       }
 

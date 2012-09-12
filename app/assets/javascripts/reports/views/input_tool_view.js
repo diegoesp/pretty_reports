@@ -5,7 +5,6 @@ app.reports.InputToolView = Base.View.extend({
   el: ".js-input-tool",
 
   events: {
-    'click .js-trash-button': '_trashButtonClicked',
     'click .js-add-button': '_addButtonClicked'
   },
 
@@ -22,10 +21,6 @@ app.reports.InputToolView = Base.View.extend({
     }
 
     app.events.trigger('item:create', itemAttr);
-  },
-
-  _trashButtonClicked: function() {
-    this.$('input').val('');
-  },
+  }
 
 });
