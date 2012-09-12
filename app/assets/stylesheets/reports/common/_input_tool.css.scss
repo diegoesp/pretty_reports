@@ -1,6 +1,7 @@
 #reports-new-page, #reports-edit-page {
 
   .input-tool-container-wrapper {
+    @include transition (all .5s);
     position: fixed;
     z-index: 100;
     top: 77px;
@@ -52,6 +53,6 @@
 
 #reports-new-page.scrolled-style, #reports-edit-page.scrolled-style {
   .input-tool-container-wrapper {
-    top: 35px;
+    top: 34px;
   }
 }

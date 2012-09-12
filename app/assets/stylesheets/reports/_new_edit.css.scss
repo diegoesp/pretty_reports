@@ -1,6 +1,10 @@
 #reports-edit-page, #reports-new-page {
+  margin-top: 290px;
+  background-image: image-url('bg-pattern.png');
+  padding-bottom: 100px;
 
   .download-button {
+    @include transition (all .5s);
     position: fixed;
     top: 37px;
     right: 340px;
@@ -8,6 +12,7 @@
     cursor: pointer;
   }
   .save-button {
+    @include transition (all .5s);
     position: fixed;
     top: 37px;
     right: 365px;

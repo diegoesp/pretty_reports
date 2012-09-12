@@ -1,6 +1,7 @@
 #page-header {
 
   .top-bar {
+    @include transition (all .5s);
     z-index: 101;
     width: 100%;
     position: fixed;
@@ -9,6 +10,7 @@
     background-color: #1E262E;
 
     .logo {
+      @include transition (all .5s);
       background: image-url("main-sprites.png") -89px 0px no-repeat;
       width: 91px;
       height: 60px;
@@ -18,6 +20,7 @@
     }
 
     .user-menu {
+      @include transition (all .5s);
       position: absolute;
       right: 145px;
       top: 28px;
@@ -46,6 +49,7 @@
     }
 
     .logout-container {
+      @include transition (all .5s);
       padding: 8px;
       position: absolute;
       right: 100px;
@@ -68,8 +72,9 @@
   #page-header .top-bar{
     height: 34px;
     @include box-shadow(0px 0px 11px 1px rgba(0, 0, 0, 0.20));
+
     .logo {
-      display: none;
+      opacity: .0;
     }
     .user-menu {
       top: 10px;
