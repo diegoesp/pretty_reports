@@ -2,7 +2,7 @@ require 'net/http'
 
 class ReportsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
 
   def index
     @reports = Report.order("created_at")
@@ -10,10 +10,11 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+    
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = Report.as_pdf(report_path(@report))
+        pdf = Report.as_pdf(report_url(@report))
         send_data pdf
       end
     end
@@ -27,6 +28,8 @@ class ReportsController < ApplicationController
     @report = Report.new(params[:report].except(:items))
     @report.items = @report.items.build(params[:report][:items])
 
+    @report.user_id = current_user.id
+
     @report.save
 
     render json: @report.to_json(include: :items)
@@ -39,10 +42,9 @@ class ReportsController < ApplicationController
   def update
     @report = Report.find(params[:report][:id])
     @report.attributes = params[:report].except(
-      :items, :id, :downloadAvailable, :waitingForDownload, :dirty, :generating)
+      :items, :id, :user_id)
 
     @report.items = @report.items.build(params[:report][:items])
-    @report.dirty = true
 
     @report.save
 

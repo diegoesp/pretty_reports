@@ -48,9 +48,12 @@ ActiveRecord::Schema.define(:version => 20120815050438) do
     t.string   "content1"
     t.string   "content2"
     t.string   "content3"
+    t.integer  "user_id",     :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "reports", ["user_id"], :name => "index_reports_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

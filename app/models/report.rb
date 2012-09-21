@@ -9,19 +9,21 @@
 #  content1    :string(255)
 #  content2    :string(255)
 #  content3    :string(255)
+#  user_id     :integer         not null
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #
 
-class Report < ActiveRecord::Base
-
-  CONVERT_API_BASE_URL = 'http://do.convertapi.com/web2pdf?'
+class Report < ActiveRecord::Base  
 
   attr_accessible :title, :subtitle, :content1, :content2, :content3, 
     :report_type
 
   validates :report_type, :presence => true
   has_many :items, order: "position ASC", dependent: :delete_all
+
+  belongs_to :user
+  validates :user_id, :presence => true
 
   def as_json(options={})
     result = super(
