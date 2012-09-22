@@ -5,11 +5,11 @@ class ReportsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
   def index
-    @reports = Report.order("created_at")
+    @reports = Report.my_reports(current_user).order("created_at")
   end
 
   def show
-    @report = Report.find(params[:id])
+    @report = Report.my_reports(current_user).find(params[:id])
     
     respond_to do |format|
       format.html
@@ -36,11 +36,11 @@ class ReportsController < ApplicationController
   end
 
   def edit
-    @report = Report.find(params[:id])
+    @report = Report.my_reports(current_user).find(params[:id])
   end
 
   def update
-    @report = Report.find(params[:report][:id])
+    @report = Report.my_reports(current_user).find(params[:report][:id])
     @report.attributes = params[:report].except(
       :items, :id, :user_id)
 
@@ -52,7 +52,7 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    @report = Report.find(params[:id])
+    @report = Report.my_reports(current_user).find(params[:id])
     @report.destroy
 
     redirect_to reports_url

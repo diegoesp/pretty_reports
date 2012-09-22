@@ -77,9 +77,17 @@ When /^one valid sprint release report should exist$/ do
 end
 
 When /^I download the first sprint release report$/ do
-  Report.all.length.should == 1
+  Report.all.length.should > 0
   visit "/reports/#{Report.first.id}?format=pdf"
 end
+
+Then /^download of the first sprint release report should fail$/ do
+  Report.all.length.should > 0
+  lambda do
+    visit "/reports/#{Report.first.id}?format=pdf"
+  end.should raise_error(ActiveRecord::RecordNotFound)
+end
+
 
 Then /^I should (not )*receive a PDF$/ do |text|
   if text == "not "

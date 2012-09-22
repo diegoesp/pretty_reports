@@ -40,4 +40,6 @@ class Report < ActiveRecord::Base
     @kit.to_pdf  
   end
 
+  scope :my_reports, lambda { |user| where("user_id = ?", user.id ) unless user.admin? }
+
 end

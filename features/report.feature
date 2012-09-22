@@ -22,8 +22,7 @@ Feature: Report that a sprint finished
   Scenario: A user cannot access other users report
     Given a sprint release report created by "admin"
     And I sign in as "user"
-    When I download the first sprint release report
-    Then I should not receive a PDF
+    Then download of the first sprint release report should fail
 
   Scenario: a user should see three reports in his search page if he created three
     Given I sign in as "user"
