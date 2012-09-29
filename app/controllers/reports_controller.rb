@@ -8,13 +8,52 @@ class ReportsController < ApplicationController
     @reports = Report.my_reports(current_user).order("created_at")
   end
 
+  # This method is particulary complex because it's the one accessed by
+  # PDFKit. PDFKit cannot log in but we cannot take out access control from
+  # the method because it would allow any non authenticated user to 
+  # access every report, even those that are not his own. So the approach
+  # taken is this one:
+  #
+  # 1) When accessing .pdf:
+  # 
+  # Full access control is enforced. Additionally, a token is generated
+  # for PDFKit that uses it as a querystring parameter to generate the report 
+  # as HTML and print the PDF.
+  #
+  # 2) When accessing .html:
+  # 
+  # In the case of a request without a token, full access control is enforced.
+  # In the case of a request with a token, the token database is accessed
+  # and then access control is enforced employing the user that owns the token.
   def show
-    @report = Report.my_reports(current_user).find(params[:id])
-    
     respond_to do |format|
-      format.html
+      format.html do
+        # If user is not logged in, then check if it's PDFKit using a token
+        tokenizer_uid = params[:tokenizer_uid]      
+        
+        if tokenizer_uid.nil?
+          authenticate_user!
+          user = current_user
+        else
+          tokenizer = Tokenizer.find_by_uid(tokenizer_uid)
+          user = tokenizer.user
+        end
+
+        @report = Report.my_reports(user).find(params[:id])
+      end
       format.pdf do
-        pdf = Report.as_pdf(report_url(@report))
+        # User must be logged in to use this feature
+        authenticate_user!
+
+        @report = Report.my_reports(current_user).find(params[:id])
+
+        # Get a token for PDFKit to use
+        tokenizer = Tokenizer.create!(:user_id => current_user.id)
+        # Insert the token in the URL
+        url = report_url(@report) + "?tokenizer_uid=#{tokenizer}"
+
+        # Send URL to PDFKit
+        pdf = Report.as_pdf(url)
         send_data pdf
       end
     end

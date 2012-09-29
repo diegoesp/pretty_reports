@@ -65,7 +65,6 @@ Given /^I create a sprint release report$/ do
     i == 3 ? select("Known Issue", :from => "section") : ""
     page.find("#add-button").click
   end
-
   page.find("#save-button").click
 end
 
@@ -78,23 +77,39 @@ end
 
 When /^I download the first sprint release report$/ do
   Report.all.length.should > 0
-  visit "/reports/#{Report.first.id}?format=pdf"
+  visit "/reports/#{Report.first.id}.pdf"
+end
+
+When /^I access the first HTML sprint release report$/ do
+  visit "/reports/#{Report.first.id}.html"
+end
+
+Then /^I should receive an HTML report$/ do
+  has_content?("Delivered Features").should be_true
 end
 
 Then /^download of the first sprint release report should fail$/ do
   Report.all.length.should > 0
   lambda do
-    visit "/reports/#{Report.first.id}?format=pdf"
-  end.should raise_error(ActiveRecord::RecordNotFound)
+    visit "/reports/#{Report.first.id}.pdf"
+  end.should raise_error()
 end
 
+Then /^I should be required to sign$/ do
+  has_content?("You need to sign in").should be_true
+end
 
-Then /^I should (not )*receive a PDF$/ do |text|
-  if text == "not "
-    page.text.starts_with?("%PDF-").should be_false
-  else
-    page.text.starts_with?("%PDF-").should be_true
-  end
+Then /^I should receive a PDF report$/ do
+  page.text.starts_with?("%PDF-").should be_true
+
+  temp_pdf = Tempfile.new('pdf')
+  temp_pdf << page.source.force_encoding('UTF-8')
+  temp_pdf.close
+  pdf_text = PDF::Reader.new(temp_pdf.path).page(1).text
+
+File.open("temp_rep.pdf", 'w') {|f| f.write(page.source.force_encoding("UTF-8")) }
+
+  page.text.length.should > 256
 end
 
 Then /^I should have (\d+) report(s*) in my search page$/ do |number, plural|

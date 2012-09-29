@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815050438) do
+ActiveRecord::Schema.define(:version => 20120924145450) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(:version => 20120815050438) do
   end
 
   add_index "reports", ["user_id"], :name => "index_reports_on_user_id"
+
+  create_table "tokenizers", :force => true do |t|
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

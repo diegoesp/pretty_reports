@@ -23,9 +23,7 @@
       <td>
         <%= link_to 'Show', report %>,
         <%= link_to 'Edit', edit_report_path(report) %>,
-        <%= link_to 'Destroy', report, method: :delete,
-          confirm: 'Are you sure?' %>
-
+        <%= link_to 'Destroy', report, method: :delete, :data => { :confirm => 'Are you sure?' }%>
       </td>
     </tr>
   <% end %>
