@@ -7,9 +7,10 @@ class HomeController < ApplicationController
   respond_to :json
 
   def index
+    @user = current_user
   end
 
-  def pdfkit 
+  def pdfkit
   end
 
   def pdf

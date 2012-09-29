@@ -45,7 +45,16 @@
       margin-top: 10px;
       margin-left: 10px;
       margin-right: 10px;
-      background: image-url('issue-feature-icon.png') 0px -5px no-repeat;
+
+      &.feature {
+        background: image-url('item-type-feature-icon.png') 0px -5px no-repeat;
+      }
+      &.task {
+        background: image-url('item-type-task-icon.png') 0px -5px no-repeat;
+      }
+      &.bug {
+        background: image-url('item-type-bug-icon.png') 0px -5px no-repeat;
+      }
     }
 
     .title, .subtitle {

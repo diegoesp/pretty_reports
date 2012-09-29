@@ -17,6 +17,10 @@
       margin-right: 20px;
       cursor: pointer;
 
+      &:hover {
+        @include transition (all .5s);
+        @include box-shadow(3px 3px 11px 1px rgba(0, 0, 0, 0.20));
+      }
       &.sprint-definition-link {
         background: image-url('sprint-definition-button.png');
       }

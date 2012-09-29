@@ -5,7 +5,6 @@ app.reports.InputToolView = Base.View.extend({
   el: ".js-input-tool",
 
   events: {
-    'click .js-trash-button': '_trashButtonClicked',
     'click .js-add-button': '_addButtonClicked'
   },
 
@@ -17,14 +16,11 @@ app.reports.InputToolView = Base.View.extend({
     var itemAttr = {
       title: this.$('[name="title"]').val(),
       subtitle: this.$('[name="subtitle"]').val(),
-      section: this.$('[name="section"]').val()
+      section: this.$('[name="section"]').val(),
+      item_type: this.$('[name="item-type"]').val()
     }
 
     app.events.trigger('item:create', itemAttr);
-  },
-
-  _trashButtonClicked: function() {
-    this.$('input').val('');
   }
 
 });

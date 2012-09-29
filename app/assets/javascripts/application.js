@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.sortable
+//= require jquery.effects.all
+//= require jquery.styledselect
 //= require modernizr
 //= require bootstrap
 //= require underscore

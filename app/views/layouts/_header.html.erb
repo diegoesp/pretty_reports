@@ -4,16 +4,21 @@
 
   <div class="user-menu dropdown">
     <i class=" icon-chevron-down icon-white"></i>
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rafael Chiti</a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <%= current_user.email %>
+    </a>
+
     <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
       <li><a tabindex="-1" href="<%= reports_url %>">My Reports</a></li>
       <li class="divider"></li>
-      <li><a tabindex="-1" href="#">Something Else</a></li>
+      <li><a tabindex="-1" href="#">Preferences</a></li>
     </ul>
   </div>
 
 
-  <%=link_to "", {controller: "devise/sessions", action: "destroy"},
-    class: "logout"%>
+  <div class="logout-container">
+    <%=link_to "", {controller: "devise/sessions", action: "destroy"},
+      class: "logout"%>
+  </div>
 
 </div>

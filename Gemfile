@@ -25,7 +25,7 @@ end
 
 group :test, :development do
   gem "rspec-rails"
-  gem 'sqlite3'  
+  gem 'sqlite3'
 end
 
 group :development do
@@ -33,6 +33,7 @@ group :development do
   # For PDFKit tests
   gem "unicorn"
   gem "hirb"            # Rails console beautifier: require "hirb" / Hirb.enable
+  gem "debugger"
 end
 
 group :test do

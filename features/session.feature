@@ -1,6 +1,6 @@
 Feature: Log into the system
   In order to use the system
-  Users should be able to 
+  Users should be able to
   register, sign in, sign out, recover password
 
   Background:

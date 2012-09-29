@@ -11,7 +11,12 @@
 
   </head>
 
-  <body <%= "id='#{yield :page_id}'"  %> >
+  <%# Add custom ids and classes to the body tag %>
+  <body
+    <%= "id='#{yield :page_id}'"  %>
+    <%= if((yield :page_class).present?) then
+      "class=#{yield :page_class}" end
+  %> >
 
     <header id="page-header" class="js-page-header">
       <%= render 'layouts/header' %>

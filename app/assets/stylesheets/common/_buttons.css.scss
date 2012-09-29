@@ -1,9 +1,3 @@
-.download-button {
-  &.waiting-for-download {
-    border: 2px solid red;
-  }
-}
-
 .button {
   // Get bootstrap button sugar and tune it to our own style.
   @extend .btn;

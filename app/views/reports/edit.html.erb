@@ -10,20 +10,16 @@
 <% end %>
 
 <% provide(:page_id, "reports-edit-page") %>
-
+<% provide(:page_class, "scroll-aware") %>
 
 <%= render 'reports/common/input_tool' %>
 
 <%= render 'reports/sprint_release/sprint_release' %>
 
-<div class="js-save-button"
-  style="position:fixed;top:37px;right:300px;z-index:102;cursor:pointer">
-
+<div class="js-save-button save-button">
   <i class="icon-ok-sign icon-white"></i>
 </div>
 
-<div class="js-download-button"
-  style="position:fixed;top:37px;right:280px;z-index:102;cursor:pointer">
-
+<div class="js-download-button download-button">
   <i class="icon-circle-arrow-down icon-white"></i>
 </div>

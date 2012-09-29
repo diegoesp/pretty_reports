@@ -10,19 +10,22 @@
       <input type="text" name="subtitle"
         placeholder="Add some functionality..." class="subtitle"></input>
 
-      <select name="section">
+      <select name="section" class="custom-select">
         <option value="delivered">Delivered</option>
         <option value="not-finished">Not Finished</option>
         <option value="known-issue">Known Issue</option>
+      </select>
+
+      <select name="item-type" class="custom-select">
+        <option value="feature">Feature</option>
+        <option value="task">Task</option>
+        <option value="bug">Bug</option>
       </select>
 
     </form>
 
     <a href="#" id="add-button" name="add-button" class="js-add-button add-button button black-button">
       <i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add
-    </a>
-    <a href="#" id="trash-button" name="trash-button" class="js-trash-button trash-button button blue-button">
-      <i class="icon-trash icon-white"></i>
     </a>
 
   </div>
