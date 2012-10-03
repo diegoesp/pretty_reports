@@ -31,15 +31,13 @@ class ReportsController < ApplicationController
         # If user is not logged in, then check if it's PDFKit using a token
         tokenizer_uid = params[:tokenizer_uid]      
         
-        if tokenizer_uid.nil?
+        if tokenizer_uid.blank?
           authenticate_user!
-          user = current_user
         else
           tokenizer = Tokenizer.find_by_uid(tokenizer_uid)
-          user = tokenizer.user
+          sign_in(:user, tokenizer.user)
         end
-
-        @report = Report.my_reports(user).find(params[:id])
+        @report = Report.my_reports(current_user).find(params[:id])
       end
       format.pdf do
         # User must be logged in to use this feature
