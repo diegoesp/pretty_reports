@@ -37,10 +37,11 @@ group :development do
 end
 
 group :test do
-  gem 'capybara'              # Driver for testing web apps and javascript via selenium
-  gem 'launchy'               # Launches the web browser via automation
-  gem 'database_cleaner'      # Resets database between tests
+  gem 'capybara'                            # Driver for testing web apps and javascript via selenium
+  gem 'launchy'                             # Launches the web browser via automation
+  gem 'database_cleaner'                    # Resets database between tests
   gem 'turn', :require => false             # Better formatted test reports
-  gem 'minitest'              # Support for cucumber
-  gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL
-end
+  gem 'minitest'                            # Support for cucumber  
+  gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL  
+  gem "pdf-reader"                          # for PDF testing
+end 

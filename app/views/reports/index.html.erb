@@ -37,8 +37,7 @@
           <td><%= time_ago_in_words report.created_at %> ago</td>
           <td>
             <%= link_to '', edit_report_path(report) , class: 'edit-icon' %>
-            <%= link_to '', report, method: :delete,
-              confirm: 'Are you sure?', class: 'delete-icon' %>
+            <%= link_to '', report, method: :delete, :data => { :confirm => 'Text' }, class: 'delete-icon' %>
 
           </td>
         </tr>
