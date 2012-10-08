@@ -11,3 +11,19 @@
   background: image-url("select-arrow.png") 96% 50% no-repeat;
   cursor: pointer;
 }
+
+#ajax-loading-indicator {
+  @include transition (all .5s);
+  opacity: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: fixed;
+  left: 50%;
+  margin-left: -80px;
+  top: 50px;
+  z-index: 500;
+
+  &.show {
+    opacity: 1;
+  }
+}
