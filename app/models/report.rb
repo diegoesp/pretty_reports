@@ -14,9 +14,9 @@
 #  updated_at  :datetime        not null
 #
 
-class Report < ActiveRecord::Base  
+class Report < ActiveRecord::Base
 
-  attr_accessible :title, :subtitle, :content1, :content2, :content3, 
+  attr_accessible :title, :subtitle, :content1, :content2, :content3,
     :report_type
 
   validates :report_type, :presence => true
@@ -36,10 +36,21 @@ class Report < ActiveRecord::Base
   # @pram url REST URL to reach the report
   # @returns printable PDF binary object
   def self.as_pdf(url)
-    @kit = PDFKit.new(url, "use-xserver" => "--quiet")
-    @kit.to_pdf  
+    @kit = PDFKit.new(url, self.wkhtmltopdf_params)
+    @kit.to_pdf
   end
 
   scope :my_reports, lambda { |user| where("user_id = ?", user.id ) unless user.admin? }
+
+
+  private
+
+  # Internal: This logic was extracted here due to platform compatibility issues
+  # On MacOS these parameters does not work, those who are using OSX need to add
+  # an initializer (and not commit it) opening this class and changing this
+  # method.
+  def self.wkhtmltopdf_params
+    {"use-xserver" => "--quiet"}
+  end
 
 end
