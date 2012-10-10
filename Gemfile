@@ -44,4 +44,4 @@ group :test do
   gem 'minitest'                            # Support for cucumber  
   gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL  
   gem "pdf-reader"                          # for PDF testing
-end 
+end
