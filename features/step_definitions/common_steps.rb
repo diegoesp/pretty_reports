@@ -115,5 +115,5 @@ end
 Then /^I should have (\d+) report(s*) in my search page$/ do |number, plural|
   visit reports_path
   # Table list should have as many rows as reports the user has + 1 (for the title row)
-  page.find(:xpath, "//table").all(:xpath, ".//tr").length == (number.to_i + 1)
+  page.find(:xpath, "//table").all(:xpath, ".//tr").length.should == (number.to_i + 1)
 end

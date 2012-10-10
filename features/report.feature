@@ -42,12 +42,6 @@ Feature: Report that a sprint finished
     And a sprint release report created by "user"
     Then I should have 3 reports in my search page
 
-  Scenario: An admin user should be able to see all reports for all users in his search page
-    Given a sprint release report created by "admin"
-    And a sprint release report created by "user"
-    And I sign in as "admin"
-    Then I should have 2 reports in my search page
-
   Scenario: A user should be able to see only his reports in his search page
     Given a sprint release report created by "admin"
     And a sprint release report created by "user"
