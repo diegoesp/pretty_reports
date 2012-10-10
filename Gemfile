@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gem 'jquery-rails'
 gem 'rails', '3.2.6'
 gem 'bourbon'
-gem 'bootstrap-sass', '2.0.3.1'
+gem 'bootstrap-sass', '2.1.0.0'
 gem 'pg'
 gem 'jquery-ui-rails'
 gem 'activeadmin'
@@ -41,7 +41,7 @@ group :test do
   gem 'launchy'                             # Launches the web browser via automation
   gem 'database_cleaner'                    # Resets database between tests
   gem 'turn', :require => false             # Better formatted test reports
-  gem 'minitest'                            # Support for cucumber  
-  gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL  
+  gem 'minitest'                            # Support for cucumber
+  gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL
   gem "pdf-reader"                          # for PDF testing
 end

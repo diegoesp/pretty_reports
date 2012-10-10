@@ -28,10 +28,10 @@ window.prLog = app.logger.log;
 // On DOM Ready add behavior to the ajax-loading-indicator.
 $(function() {
   $("#ajax-loading-indicator").ajaxStart(function(){
-     $(this).show();
+     $(this).addClass('show');
   });
   $("#ajax-loading-indicator").ajaxStop(function() {
-    $(this).hide()
+    $(this).removeClass('show');
   });
 });
 

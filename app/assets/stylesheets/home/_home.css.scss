@@ -10,26 +10,63 @@
     margin: auto;
     width: 789px;
 
-    div {
-      width: 239px;
-      height: 231px;
+    .box {
+      position: relative;
+      width: 230px;
+      height: 220px;
       float: left;
       margin-right: 20px;
       cursor: pointer;
+      background-color: white;
+      @include border-radius(3px);
+      @include box-shadow(0px 0px 11px 1px rgba(0, 0, 0, 0.10));
+      color: #707173;
 
       &:hover {
-        @include transition (all .5s);
-        @include box-shadow(3px 3px 11px 1px rgba(0, 0, 0, 0.20));
+        @include transition (all .3s);
+        @include box-shadow(0px 0px 12px 1px rgba(0, 0, 0, 0.20));
       }
-      &.sprint-definition-link {
-        background: image-url('sprint-definition-button.png');
+
+      .title {
+      left: 16px;
+      top: 12px;
+      position: absolute;
       }
-      &.sprint-release-link {
-        background: image-url('sprint-release-button.png');
+
+      .icon {
+        margin: auto;
+        margin-top: 44px;
+        width: 140px;
+        height: 130px;
+        background: image-url('sprites-1.png');
       }
-      &.daily-email-link {
-        background: image-url('daily-email-button.png');
+      .sprint-definition-icon {
+        background-position: -280px 0px;
       }
+      .sprint-release-icon {
+        background-position: -420px 0px;
+      }
+      .daily-email-icon {
+        background-position: -560px 0px;
+      }
+
+      .pages {
+        position: absolute;
+        font-size: 12px;
+        left: 16px;
+        bottom: 8px;
+      }
+
+      .plus-icon {
+        width: 28px;
+        height: 28px;
+        display: block;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        background: image-url('sprites-1.png')  -226px -41px;
+      }
+
     }
 
   }
