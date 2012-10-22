@@ -27,3 +27,40 @@
     opacity: 1;
   }
 }
+
+@font-face {
+    font-family: 'liberation_sansbold';
+    src: url('liberationsans-bold.eot');
+    src: url('liberationsans-bold.eot?#iefix') format('embedded-opentype'),
+         url('liberationsans-bold.woff') format('woff'),
+         url('liberationsans-bold.ttf') format('truetype'),
+         url('liberationsans-bold.svg#liberation_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'liberation_sansitalic';
+    src: url('liberationsans-italic.eot');
+    src: url('liberationsans-italic.eot?#iefix') format('embedded-opentype'),
+         url('liberationsans-italic.woff') format('woff'),
+         url('liberationsans-italic.ttf') format('truetype'),
+         url('liberationsans-italic.svg#liberation_sansitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'liberation_sansregular';
+    src: url('liberationsans-regular.eot');
+    src: url('liberationsans-regular.eot?#iefix') format('embedded-opentype'),
+         url('liberationsans-regular.woff') format('woff'),
+         url('liberationsans-regular.ttf') format('truetype'),
+         url('liberationsans-regular.svg#liberation_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  font-family: liberation_sansregular, helvetica;
+}
