@@ -25,7 +25,7 @@ require 'spec_helper'
 describe User do
   
   before(:each) do
-    @user = User.create!(:email => "test@prettyreports.com", :password => "password", :admin => true)
+    @user = User.create!(:first_name => "test", :last_name => "user", :email => "test@prettyreports.com", :password => "password", :admin => true)
   end
 
   it "should be a valid object" do
@@ -34,6 +34,16 @@ describe User do
 
   it "should require the e-mail" do
     @user.email = nil
+    @user.should_not be_valid
+  end
+
+  it "should require last_name" do
+    @user.last_name = nil
+    @user.should_not be_valid
+  end
+
+  it "should require first_name" do
+    @user.first_name = nil
     @user.should_not be_valid
   end
 
