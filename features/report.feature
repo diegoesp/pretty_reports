@@ -19,12 +19,6 @@ Feature: Report that a sprint finished
     When I access the first HTML sprint release report
     Then I should receive an HTML report
 
-  # Scenario: A user can generate a PDF of his report
-  #   Given a sprint release report created by "user"
-  #   And I sign in as "user"
-  #   When I download the first sprint release report
-  #   Then I should receive a PDF report
-
   Scenario: A user cannot access other users report
     Given a sprint release report created by "admin"
     And I sign in as "user"

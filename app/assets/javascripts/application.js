@@ -23,3 +23,4 @@
 //
 //= require common
 //= require reports
+//= require users
