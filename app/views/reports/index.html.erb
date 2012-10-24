@@ -1,23 +1,6 @@
 <% provide(:title, 'My Reports') %>
 <% provide(:page_id, "my-reports-page") %>
 
-<div class="top-toolbar-wrapper">
-  <div class="top-toolbar">
-
-    <a type="button" onclick="window.location='<%= new_report_path %>'"
-      class="button blue-button js-new-button" value="New">
-
-      <i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;New Sprint Release
-    </a>
-    <a type="button" onclick="window.location='<%= new_report_path %>'"
-      class="button blue-button js-new-button" value="New">
-
-      <i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;New Sprint Definition
-    </a>
-
-  </div>
-</div>
-
 <div class="container">
 
   <table class="custom-table">
@@ -47,4 +30,21 @@
     </tbody>
   </table>
 
+</div>
+
+<div class="actions-toolbar-wrapper">
+  <div class="actions-toolbar">
+
+    <a type="button" onclick="window.location='<%= new_report_path %>'"
+      class="button white-button tall-button js-new-button" value="New">
+
+      New Sprint Release<i class="button-icon-plus-right"></i>
+    </a>
+    <a type="button" onclick="window.location='<%= new_report_path %>'"
+      class="button white-button tall-button js-new-button" value="New">
+
+      New Sprint Definition<i class="button-icon-plus-right"></i>
+    </a>
+
+  </div>
 </div>

@@ -1,16 +1,11 @@
 #my-reports-page {
   background: image-url('bg-pattern.png');
-  padding-top: 180px;
+  padding-top: 120px;
 
-  .top-toolbar-wrapper {
-    position: fixed;
-    z-index: 100;
-    top: 77px;
-    background-color: white;
-    @include box-shadow(0px 0px 11px 1px rgba(0, 0, 0, 0.40));
+  .actions-toolbar-wrapper {
     width: 100%;
 
-    .top-toolbar {
+    .actions-toolbar {
       position: relative;
       width: 940px;
       height: 60px;
