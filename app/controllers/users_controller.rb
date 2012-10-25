@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     if @user != current_user
       raise "user cannot edit other users unless it is an admin"  unless current_user.admin?
     end
-
   end
 
   def update
@@ -20,12 +19,20 @@ class UsersController < ApplicationController
       raise "user cannot edit other users unless it is an admin"  unless current_user.admin?
     end
 
-    @user.attributes = params[:user].except(:id, :admin)
+    if params[:user][:password].blank?
+      params[:user].delete("password")
+      params[:user].delete("password_confirmation")
+    end
+
+    # Never update admin field. That is only managed by the backend
+    params[:user].delete("admin")
+
+    @user.attributes = params[:user]
 
     if @user.save
-      flash[:notice] = "Your information has been updated succesfully"      
+      flash.now[:notice] = "Your information has been updated succesfully"      
     else
-      flash[:alert] = @user.errors.full_messages.join(" - ")
+      flash.now[:alert] = @user.errors.full_messages.join(" - ")
     end
     render "edit"
   end

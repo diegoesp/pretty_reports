@@ -1,14 +1,21 @@
 # SQLite version 3.x
-#   gem install sqlite3
+#  gem install sqlite3
 #
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
+#  If you use SQLite 3, ensure SQLite 3 gem is defined in your Gemfile...
+#  gem 'sqlite3'
+# 
+#  ...and also point database.yml to sqlite:
+#
+#  adapter: sqlite3
+#  database: db/development.sqlite3
+#  pool: 5
+#  timeout: 5000
 
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  username: postgres
+  password: password
+  database: pretty_reports_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

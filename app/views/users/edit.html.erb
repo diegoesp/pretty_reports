@@ -3,7 +3,7 @@
 
 <div class="users-edit-box">
 
-  <%= form_for @user do |f| %>
+  <%= form_for @user, :html => { :autocomplete => "off" } do |f| %>
 
     <legend>Update your personal information and press Save to continue</legend>
 
@@ -17,7 +17,7 @@
     <%= f.email_field :email %>
 
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, { :autocomplete => "off" } %>
 
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
