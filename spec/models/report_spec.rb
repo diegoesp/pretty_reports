@@ -19,7 +19,7 @@ require 'spec_helper'
 describe Report do
   
   before(:each) do
-    @user = User.create!(:email => "user@prettyreports.com", 
+    @user = User.create!(:first_name => "test", :last_name => "user",  :email => "user@prettyreports.com", 
       :password => "password")
     
     @report = Report.new

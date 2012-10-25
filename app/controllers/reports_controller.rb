@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
   def index
-    @reports = Report.my_reports(current_user).order("created_at")
+    @reports = current_user.reports.order("created_at")
   end
 
   # This method is particulary complex because it's the one accessed by
@@ -37,13 +37,13 @@ class ReportsController < ApplicationController
           tokenizer = Tokenizer.find_by_uid(tokenizer_uid)
           sign_in(:user, tokenizer.user)
         end
-        @report = Report.my_reports(current_user).find(params[:id])
+        @report = current_user.reports.find(params[:id])
       end
       format.pdf do
         # User must be logged in to use this feature
         authenticate_user!
 
-        @report = Report.my_reports(current_user).find(params[:id])
+        @report = current_user.reports.find(params[:id])
 
         # Get a token for PDFKit to use
         tokenizer = Tokenizer.create!(:user_id => current_user.id)
@@ -73,11 +73,11 @@ class ReportsController < ApplicationController
   end
 
   def edit
-    @report = Report.my_reports(current_user).find(params[:id])
+    @report = current_user.reports.find(params[:id])
   end
 
   def update
-    @report = Report.my_reports(current_user).find(params[:report][:id])
+    @report = current_user.reports.find(params[:report][:id])
     @report.attributes = params[:report].except(
       :items, :id, :user_id)
 
@@ -89,7 +89,7 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    @report = Report.my_reports(current_user).find(params[:id])
+    @report = current_user.reports.find(params[:id])
     @report.destroy
 
     redirect_to reports_url

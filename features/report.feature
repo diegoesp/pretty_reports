@@ -19,12 +19,6 @@ Feature: Report that a sprint finished
     When I access the first HTML sprint release report
     Then I should receive an HTML report
 
-  # Scenario: A user can generate a PDF of his report
-  #   Given a sprint release report created by "user"
-  #   And I sign in as "user"
-  #   When I download the first sprint release report
-  #   Then I should receive a PDF report
-
   Scenario: A user cannot access other users report
     Given a sprint release report created by "admin"
     And I sign in as "user"
@@ -41,12 +35,6 @@ Feature: Report that a sprint finished
     And a sprint release report created by "user"
     And a sprint release report created by "user"
     Then I should have 3 reports in my search page
-
-  Scenario: An admin user should be able to see all reports for all users in his search page
-    Given a sprint release report created by "admin"
-    And a sprint release report created by "user"
-    And I sign in as "admin"
-    Then I should have 2 reports in my search page
 
   Scenario: A user should be able to see only his reports in his search page
     Given a sprint release report created by "admin"
