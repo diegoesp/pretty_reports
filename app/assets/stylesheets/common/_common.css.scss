@@ -64,3 +64,23 @@
 body {
   font-family: liberation_sansregular, helvetica;
 }
+
+.coming-soon {
+  position: relative;
+  &:after {
+    position: absolute;
+    content: 'Coming soon';
+    width: 100px;
+    top: 0px;
+    right: -20px;
+    height: 22px;
+    text-align: center;
+    border: 1px dashed white;
+    background-color: rgba(148, 35, 35, 0.5);
+    color: white;
+    @include border-radius(5px);
+    @include transform(skew(2deg) rotate(10deg));
+    @include box-shadow(0px 0px 4px 1px rgba(0, 0, 0, 0.2));
+    z-index: 1;
+  }
+}
