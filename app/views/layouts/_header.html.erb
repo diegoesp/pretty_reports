@@ -3,10 +3,11 @@
     onclick="window.location='<%= root_url %>'"></div>
 
   <div class="user-menu dropdown">
-    <i class=" icon-chevron-down icon-white"></i>
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
       <%= current_user.full_name %>
     </a>
+    <i class=" icon-chevron-down icon-white"></i>
 
     <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
       <li><a tabindex="-1" href="<%= reports_url %>">My Reports</a></li>
