@@ -3,7 +3,7 @@
 #
 #  If you use SQLite 3, ensure SQLite 3 gem is defined in your Gemfile...
 #  gem 'sqlite3'
-# 
+#
 #  ...and also point database.yml to sqlite:
 #
 #  adapter: sqlite3
@@ -13,17 +13,17 @@
 
 development:
   adapter: postgresql
-  username: postgres
-  password: password
-  database: pretty_reports_dev
+  username: prdev
+  password: prdev
+  database: pretty_reports_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test: &test  
+test: &test
   adapter: postgresql
-  username: postgres
-  password: password
+  username: prtest
+  password: prtest
   database: pretty_reports_test
 
 production:
