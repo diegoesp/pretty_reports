@@ -61,5 +61,8 @@ module PrettyReports
 
     # active admin: for deploying on heroku
     config.assets.initialize_on_precompile = false
+
+    # add app/assets/fonts to the asset path
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

@@ -6,7 +6,7 @@
   border: none;
   outline: none;
   @include border-radius(3px);
-  padding: 10px 6px 10px 6px;
+  padding: 10px 15px 10px 15px;
 
   &:hover {
     text-decoration: none;
@@ -35,10 +35,34 @@
     }
   }
   &.black-button {
+    border: 1px solid #D7D7D7;
     color: white;
     background-color: #1E262E;
     &:hover {
       background-color: #3F4B57;
     }
   }
+  &.white-button {
+    color: #6D6E70;
+    background-color: white;
+    @include box-shadow(0px 0px 3px 1px #D7D7D7);
+    &:hover {
+      background-color: #F8F8F8;
+    }
+    &:active {
+      @include box-shadow(0px 1px 2px 1px #D7D7D7 inset);
+    }
+  }
+}
+
+.button-icon-plus-right {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  background-image: image-url("sprites-1.png");
+  background-position: -225px -41px;
+  background-repeat: no-repeat;
+  margin-right: 5px;
+  margin-left: 15px;
 }
