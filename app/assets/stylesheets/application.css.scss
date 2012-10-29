@@ -11,6 +11,9 @@
  */
 
 @import "bourbon";
+// In order to chagne some sass variables we need to import the
+// style before bootstrap
+@import "common/boostrap_custom";
 @import "bootstrap";
 @import "normalize";
 

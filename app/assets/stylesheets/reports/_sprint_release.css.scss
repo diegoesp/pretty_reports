@@ -4,6 +4,7 @@
   position: relative;
   background-color: white;
   padding: 10px;
+  padding-left: 20px;
   width: 940px;
   color: gray;
   @include border-radius(3px);
@@ -59,31 +60,31 @@
     color: #504737;
     position: relative;
     height: 50px;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #F5F5F5;
 
     .icon {
-      width: 30px;
-      height: 30px;
+      width: 74px;
+      height: 28px;
       float: left;
       margin-top: 10px;
       margin-left: 10px;
       margin-right: 10px;
 
       &.feature {
-        background: image-url('item-type-feature-icon.png') 0px -5px no-repeat;
+        background: image-url('item-type-icon-sprite.png') 0px 0px no-repeat;
       }
       &.task {
-        background: image-url('item-type-task-icon.png') 0px -5px no-repeat;
+        background: image-url('item-type-icon-sprite.png') 0px -28px no-repeat;
       }
       &.bug {
-        background: image-url('item-type-bug-icon.png') 0px -5px no-repeat;
+        background: image-url('item-type-icon-sprite.png') 0px -56px no-repeat;
       }
     }
 
     .title, .subtitle {
       display: block;
       float: left;
-      margin-top: 10px;
+      margin-top: 13px;
     }
 
     .title {
