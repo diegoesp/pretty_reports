@@ -32,7 +32,8 @@
       padding-top: 7px;
 
       i {
-        margin-top: 1px;
+        margin-top: 0px;
+        margin-left: 2px;
       }
       a {
         color: white;
@@ -53,7 +54,7 @@
       padding: 8px;
       position: absolute;
       right: 100px;
-      border-left: 1px solid #2F3840;
+      border-left: 1px solid #646464;
       top: 24px;
       .logout {
         display: block;
