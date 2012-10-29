@@ -7,7 +7,7 @@
     position: fixed;
     top: 0;
     height: 76px;
-    background-color: #1E262E;
+    background: image-url('apple-pattern.png');
 
     .logo {
       @include transition (all .5s);
