@@ -1,9 +1,9 @@
 
 #welcome-page {
+  background-image: image-url('bg-pattern.png');
 
   header {
     height: 80px;
-    background-color: #F3F3F6;
     position: relative;
 
     .logo {
@@ -17,7 +17,7 @@
     }
 
     .buttons-container {
-      width: 156px;
+      width: 210px;
       position: relative;
       margin: auto;
       left: 274px;
@@ -30,24 +30,83 @@
 
   }
 
+  .title-box {
+    width: 580px;
+    margin: auto;
+    margin-top: 40px;
+    color: #616161;
+
+    .strong {
+      font-family: liberation_sansbold;
+    }
+
+    h1 {
+      font-size: 29px;
+    }
+    h2 {
+      font-size: 15px;
+    }
+    h1, h2 {
+      line-height: normal;
+      margin: 0px;
+      display: inline;
+      text-align: center;
+    }
+  }
+
   section.banner {
-    height: 352px;
-    background-color: #63A0C8;
+    height: 575px;
+    margin-top: 15px;
+    margin-bottom: 100px;
     background-image: image-url('home-banner.png');
     background-repeat: no-repeat;
     background-position: center;
   }
 
-  section.how-it-works {
-    height: 168px;
-    background: image-url('how-it-works.png') no-repeat center;
-    background-color: #F3F3F6;
-  }
 
   section.footer {
-    height: 511px;
-    background: image-url('footer.png') no-repeat center;
-    background-color: #F3F3F6;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 53px;
+    color: #797D80;
+    background-color: white;
+    @include top-oval-shadow();
+
+    a {
+      cursor: pointer;
+      color: #797D80;
+    }
+
+    div {
+      float: left;
+      margin-top: 18px;
+    }
+
+    .left-links {
+      a {
+        margin-right: 24px;
+
+        &:first-child {
+          margin-left: 15px;
+        }
+      }
+    }
+
+    .copy-right {
+      margin-left: 50px;
+    }
+
+    .right-links {
+      float: right;
+
+      a:last-child {
+        margin-right: 15px;
+        padding: 5px;
+        border-left: 1px solid #D9D8DD;
+      }
+    }
+
   }
 
 }

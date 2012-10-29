@@ -9,12 +9,12 @@
     </a>
     <i class=" icon-chevron-down icon-white"></i>
 
-    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="drop3">
       <li><a tabindex="-1" href="<%= reports_url %>">My Reports</a></li>
       <li class="divider"></li>
       <li>
-        <!--<a tabindex="-1" href="<%= url_for current_user %>">Preferences</a>-->
-        <%= link_to 'Preferences', { :action => :edit, :id => current_user, :controller => "users" }, { :tabindex => "-1" } %>
+        <%= link_to 'Preferences', { :action => :edit,
+          :id => current_user, :controller => "users" }, { :tabindex => "-1" } %>
       </li>
     </ul>
   </div>
