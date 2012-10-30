@@ -47,7 +47,7 @@ class Report < ActiveRecord::Base
   # an initializer (and not commit it) opening this class and changing this
   # method.
   def self.wkhtmltopdf_params
-    {"use-xserver" => "--quiet"}
+    {}
   end
 
 end
