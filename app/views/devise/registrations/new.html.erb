@@ -20,6 +20,15 @@
 
     <legend>CREATE AN ACCOUNT</legend>
 
+    <%= link_to "Or sign in", {controller: 'devise/sessions', action: 'new'},
+     :class => 'sign-in-link' %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
     <%= f.label :email %>
     <%= f.email_field :email %>
 

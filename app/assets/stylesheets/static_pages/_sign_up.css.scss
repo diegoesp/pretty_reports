@@ -20,7 +20,7 @@
     padding: 15px;
     padding-left: 30px;
     padding-right: 40px;
-  }
+  }  
 
   .alert {
     width: 50%;
@@ -28,11 +28,18 @@
     margin-top: 4px;
   }
 
+  .sign-in-link {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+  }
+    
+
   form {
     position: relative;
 
     legend {
-      font-size: 12px;
+      font-size: 15px;
       font-weight: bold;
       margin-bottom: 12px;
     }
