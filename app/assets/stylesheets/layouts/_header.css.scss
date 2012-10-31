@@ -20,6 +20,19 @@
       cursor: pointer;
     }
 
+    .text-logo {
+      position: absolute;
+      @include transition (all .5s);
+      cursor: pointer;
+      width: 100px;
+      height: 15px;
+      left: 100px;
+      top: 8px;
+      color: white;
+      font-family: Arial;
+      opacity: 0;
+    }
+
     .user-menu {
       @include transition (all .5s);
       position: absolute;
@@ -77,6 +90,9 @@
 
     .logo {
       opacity: .0;
+    }
+    .text-logo {
+      opacity: 1;
     }
     .user-menu {
       top: 10px;
