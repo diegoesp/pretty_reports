@@ -15,10 +15,10 @@
     <tbody>
       <% @reports.each do |report| %>
         <tr>
-          <td><%= link_to report.title, report_path(report) %></td>
+          <td><%= report.title %></td>
           <td><%= human_report_type report.report_type %></td>
           <td><%= time_ago_in_words report.created_at %> ago</td>
-          <td>
+          <td class="actions">
             <%= link_to '', edit_report_path(report) , class: 'edit-icon' %>
             <%= link_to '', report, method: :delete,
               data: { :confirm => 'Are you sure you want to delete the report' },
