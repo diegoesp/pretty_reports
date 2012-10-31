@@ -1,6 +1,7 @@
 #page-header {
 
   .top-bar {
+    @include bottom-oval-shadow();
     @include transition (all .5s);
     z-index: 101;
     width: 100%;

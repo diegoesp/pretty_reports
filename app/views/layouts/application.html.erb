@@ -12,9 +12,7 @@
   </head>
 
   <%# Add custom ids and classes to the body tag %>
-  <body
-    <%= "id='#{yield :page_id}'"  %>
-    <%= if((yield :page_class).present?) then
+  <body <%= "id='#{yield :page_id}'"  %>  <%= if((yield :page_class).present?) then
       "class=#{yield :page_class}" end
   %> >
 
@@ -42,9 +40,7 @@
       <%= yield %>
     </section>
 
-
-    <section id="page-footer">
-    </section>
+    <%= render 'layouts/footer' %>
 
     <div id="ajax-loading-indicator" class="alert alert-success">
       Loading...
