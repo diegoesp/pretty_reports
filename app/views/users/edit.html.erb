@@ -1,11 +1,13 @@
 <% provide(:title, 'Preferences') %>
 <% provide(:page_id, "users-edit-page") %>
 
+<h1>Your preferences</h1>
+
 <div class="users-edit-box">
 
   <%= form_for @user, :html => { :autocomplete => "off" } do |f| %>
 
-    <legend>Update your personal information and press Save to continue</legend>
+    <legend>Update your personal information below</legend>
 
     <%= f.label :last_name %>
     <%= f.text_field :last_name %>

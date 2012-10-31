@@ -10,6 +10,13 @@
     cursor: pointer;
   }
 
+  h1 {
+    position:relative;
+    top: 80px;
+    text-align: center;
+    z-index: 1px;
+  }
+
   .users-edit-box {
     width: 350px;
     margin: auto;
@@ -23,21 +30,20 @@
   }
 
   .alert {
-    margin-top: -50px;
+    top: 50px;
     position:absolute;
     width: 600px;
     left:50%;
     margin-left: -300px;
-    z-index: 999;
-    text-align: center;
+    text-align: center;  
+    z-index: 200;
   }
 
   form {
     position: relative;
 
     legend {
-      text-align: center;
-      font-size: 12px;
+      font-size: 15px;
       font-weight: bold;
       margin-bottom: 12px;
     }

@@ -12,19 +12,19 @@
 #  timeout: 5000
 
 development:
-  adapter: postgresql
-  username: prdev
-  password: prdev
-  database: pretty_reports_development
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test: &test
-  adapter: postgresql
-  username: prtest
-  password: prtest
-  database: pretty_reports_test
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
 
 production:
   adapter: postgresql

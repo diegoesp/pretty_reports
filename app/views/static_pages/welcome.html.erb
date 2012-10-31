@@ -5,13 +5,30 @@
   <div class="logo"></div>
 
   <div class="buttons-container">
-    <%= link_to "Sign Up",
-      {controller: 'devise/registrations', action: 'new'},
+    <%
+      if current_user.blank?
+    %>
+      <%= link_to "Sign Up",
+        {controller: 'devise/registrations', action: 'new'},
+        :class => 'button green-button' %>
+
+      <%= link_to "Sign in",
+        {controller: 'devise/sessions', action: 'new'},
+        :class => 'button blue-button' %>
+    <%
+    else    
+    %>
+      <%= link_to "Sign out",
+      {controller: 'devise/sessions', action: 'destroy'},
       :class => 'button green-button' %>
 
-    <%= link_to "Login",
-      {controller: 'devise/sessions', action: 'new'},
-      :class => 'button blue-button' %>
+      <%= link_to "Reports",
+        "/home",
+        :class => 'button blue-button' %>
+    <%
+    end
+    %>
+
   </div>
 
 </header>
