@@ -64,8 +64,8 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(params[:report].except(:items))
     
-    # Eliminate "\n" because of a bug in the template
-    @report.title = @report.title.gsub("\n    ", "").gsub("\n  ", "")
+    # //FIXME Eliminate "\n" because of a bug in the template
+    @report.title = @report.title.gsub("\n", "").strip
     
     @report.items = @report.items.build(params[:report][:items])
 
@@ -85,8 +85,8 @@ class ReportsController < ApplicationController
     @report.attributes = params[:report].except(
       :items, :id, :user_id)
 
-    # Eliminate "\n" because of a bug in the template
-    @report.title = @report.title.gsub("\n    ", "").gsub("\n  ", "")
+    # //FIXME Eliminate "\n" because of a bug in the template
+    @report.title = @report.title.gsub("\n", "").strip
 
     @report.items = @report.items.build(params[:report][:items])
 

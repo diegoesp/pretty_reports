@@ -13,8 +13,8 @@
 
 development:
   adapter: postgresql
-  username: postgres
-  password: postgres
+  username: prdev
+  password: prdev
   database: pretty_reports_development
 
 
@@ -23,8 +23,8 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   adapter: postgresql
-  username: postgres
-  password: postgres
+  username: prtest
+  password: prtest
   database: pretty_reports_test
 
 
