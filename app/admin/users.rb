@@ -5,6 +5,8 @@ ActiveAdmin.register User do
   filter :updated_at
 
   index do
+    column :first_name
+    column :last_name
     column :email
     column :created_at
     column :updated_at
@@ -15,6 +17,8 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "User" do
+      f.input :first_name
+      f.input :last_name
       f.input :email
       f.input :password
       f.input :password_confirmation
