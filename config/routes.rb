@@ -5,7 +5,7 @@ PrettyReports::Application.routes.draw do
   devise_for :users
   devise_scope :user do get '/users/sign_out' => 'devise/sessions#destroy' end
 
-  root to: "static_pages#welcome"
+  root to: "home#index"
 
   get '/home' => 'home#index'
   get '/static-pages/about-us' => 'static_pages#about_us'
