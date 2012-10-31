@@ -70,4 +70,16 @@ describe Report do
     item.title = "d" * 1024;
     item.should be_valid
   end
+
+  it "should get a define a valid filename for a report" do
+    @report.title = "This \\is and @/invalid _- name for a file"
+    @report.to_filename.index("\\").should be_nil
+    @report.to_filename.index("/").should be_nil
+    @report.to_filename.index("@").should be_nil
+  end
+
+  it "should get a define a cute filename for a report" do
+    @report.title = "My sprint release for Panera"
+    @report.to_filename.should == "My_sprint_release_for_Panera"
+  end
 end

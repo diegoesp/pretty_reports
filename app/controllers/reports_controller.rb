@@ -52,7 +52,7 @@ class ReportsController < ApplicationController
 
         # Send URL to PDFKit
         pdf = Report.as_pdf(url)
-        send_data pdf
+        send_data pdf, :filename => @report.to_filename + ".pdf"
       end
     end
   end
@@ -63,6 +63,10 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(params[:report].except(:items))
+    
+    # Eliminate "\n" because of a bug in the template
+    @report.title = @report.title.gsub("\n    ", "").gsub("\n  ", "")
+    
     @report.items = @report.items.build(params[:report][:items])
 
     @report.user_id = current_user.id
@@ -80,6 +84,9 @@ class ReportsController < ApplicationController
     @report = current_user.reports.find(params[:report][:id])
     @report.attributes = params[:report].except(
       :items, :id, :user_id)
+
+    # Eliminate "\n" because of a bug in the template
+    @report.title = @report.title.gsub("\n    ", "").gsub("\n  ", "")
 
     @report.items = @report.items.build(params[:report][:items])
 

@@ -40,6 +40,17 @@ class Report < ActiveRecord::Base
     @kit.to_pdf
   end
 
+  # Returns the name that this report should have if serialized to a filename
+  # @returns filename, sanitized
+  def to_filename()
+    filename = self.title
+    if filename == "" 
+      filename = "report"
+    end
+
+    filename.gsub(/[^0-9A-Za-z.\-]/, '_')
+  end
+
   private
 
   # Internal: This logic was extracted here due to platform compatibility issues
