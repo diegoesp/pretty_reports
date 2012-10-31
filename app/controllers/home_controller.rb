@@ -2,22 +2,19 @@ require 'pdfkit'
 
 class HomeController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:index]
 
   respond_to :json
 
-  def index
+  def index      
+    if !user_signed_in?
+      redirect_to welcome_page_path
+    end
+
     @user = current_user
   end
 
   def pdfkit
-  end
-
-  def pdf
-    url = params[:url]
-    @kit = PDFKit.new(url, "use-xserver" => "--quiet")
-    # Respond with PDF
-    send_data(@kit.to_pdf, :filename => "pretty_report.pdf")
   end
 
 end

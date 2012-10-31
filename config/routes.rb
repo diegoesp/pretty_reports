@@ -7,6 +7,7 @@ PrettyReports::Application.routes.draw do
 
   root to: "home#index"
 
+  get '/home' => 'home#index'
   get '/static-pages/about-us' => 'static_pages#about_us'
   get '/static-pages/welcome' => 'static_pages#welcome', as: 'welcome_page'
 
