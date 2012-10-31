@@ -3,21 +3,39 @@
   background-image: image-url('bg-pattern.png');
   padding-bottom: 100px;
 
-  .download-button {
+  .save-button, .download-button  {
     @include transition (all .5s);
     position: fixed;
-    top: 37px;
-    right: 340px;
+    top: 36px;
     z-index: 102;
+    color: white;
     cursor: pointer;
+
+    i {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
   }
+
   .save-button {
-    @include transition (all .5s);
-    position: fixed;
-    top: 37px;
-    right: 365px;
-    z-index: 102;
-    cursor: pointer;
+    color: white;
+    right: 400px;
+
+    i {
+      margin-top: -8px;
+      background: image-url('download-save-icons.png') no-repeat;
+    }
+  }
+  .download-button {
+    right: 275px;
+    width: 100px;
+
+    i {
+      background: image-url('download-save-icons.png') -20px no-repeat;
+    }
   }
 
   section#page-footer {
