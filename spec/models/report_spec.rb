@@ -59,4 +59,15 @@ describe Report do
     @report.should_not respond_to(:dirty)
   end
 
+  it "should allow title with 1024 chars" do
+    item = @report.items.first
+    item.title = "d" * 1024;
+    item.should be_valid
+  end
+
+  it "should allow subtitle with 1024 chars" do
+    item = @report.items.first
+    item.title = "d" * 1024;
+    item.should be_valid
+  end
 end
