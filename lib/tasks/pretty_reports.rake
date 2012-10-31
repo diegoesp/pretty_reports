@@ -3,12 +3,7 @@ namespace :pretty_reports do
   # Run a complete setup: re-create schema, prepare databases, seed, run tests, etc.
   task :setup do
     i = 1
-    total = 7
-
-    puts "# #{i} / #{total}: Dropping tables"
-    system "bundle exec rake db:drop RAILS_ENV=development"
-    # Rake::Task["db:drop"].invoke
-    i = i + 1
+    total = 6
     
     puts "# #{i} / #{total}: Migrating tables"
     system "bundle exec rake db:migrate RAILS_ENV=development"

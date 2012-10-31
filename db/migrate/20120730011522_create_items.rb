@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :item_type
       t.string :section
-      t.string :title
+      t.string :title, :limit => 1024
       t.text :subtitle
       t.references :report
       t.timestamps
