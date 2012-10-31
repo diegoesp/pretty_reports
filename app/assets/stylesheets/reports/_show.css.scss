@@ -1,6 +1,30 @@
 #reports-show-page {
-  padding-top: 20px;
+  padding-top: 0px;
+
   #page-header {
     display: none;
   }
+
+  section#page-footer {
+    display: none;
+  }
+
+  .sprint-release-report {
+    border: none;
+    @include box-shadow(none);
+    &:after, &:before {
+      @include box-shadow(none);
+    }
+  }
+
+  .item {
+    .remove {
+      display: none !important;
+    }
+  }
+
+  & .beta-label {
+    display: none;
+  }
+
 }
