@@ -45,3 +45,7 @@ group :test do
   gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL
   gem "pdf-reader"                          # for PDF testing
 end
+
+group :production do
+  gem 'rack-google_analytics', :require => "rack/google_analytics"
+end

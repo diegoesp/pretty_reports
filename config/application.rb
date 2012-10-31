@@ -64,5 +64,10 @@ module PrettyReports
 
     # add app/assets/fonts to the asset path
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    # Add Google Analytics using a specific gem for the purpose
+    if Rails.env == "production"
+      config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-35955215-1")
+    end
   end
 end
