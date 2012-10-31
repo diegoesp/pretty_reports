@@ -42,7 +42,9 @@
         }
       }
 
-      td {
+      td.actions {
+        width: 65px;
+
         .edit-icon {
           display: inline-block;
           background: image-url("main-sprites.png") -249px 2px no-repeat;

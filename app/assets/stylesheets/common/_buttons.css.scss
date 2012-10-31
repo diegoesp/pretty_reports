@@ -4,7 +4,7 @@
 
   background: none;
   border: none;
-  outline: none;
+  outline: none !important;
   @include border-radius(3px);
   padding: 10px 15px 10px 15px;
 
