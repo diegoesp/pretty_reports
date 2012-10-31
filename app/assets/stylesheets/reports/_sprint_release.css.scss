@@ -18,7 +18,7 @@
     height: 10px;
     content: ' ';
     left: 12px;
-    bottom: 16px;
+    bottom: 17px;
     background: transparent;
     @include transform(skew(-5deg) rotate(-5deg));
     @include box-shadow(0px 0px 12px 6px rgba(0, 0, 0, 0.2));
@@ -50,7 +50,7 @@
     }
   }
 
-  ul.known-issues li:last-child {
+  ul li:last-child {
     .item {
       border-bottom: none;
     }
@@ -59,8 +59,14 @@
   .item {
     color: #504737;
     position: relative;
-    height: 50px;
-    border-bottom: 1px solid #F5F5F5;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f2f2f2;
+
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
 
     .icon {
       width: 74px;
@@ -81,32 +87,32 @@
       }
     }
 
-    .title, .subtitle {
-      display: block;
+    .text-container {
       float: left;
-      margin-top: 13px;
-    }
+      width: 810px;
+      margin-top: 12px;
 
-    .title {
-      font-weight: bold;
-      margin-right: 10px;
-    }
-    .subtitle {
-      color: #817E79;
-    }
+      .title {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .subtitle {
+        color: #817E79;
+      }
 
-    .remove {
-      cursor: pointer;
-      position: absolute;
-      right: 10px;
-      top: 0px;
-      width: 20px;
-      height: 34px;
+      .remove {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        width: 20px;
+        height: 34px;
 
-      i {
-        top: 9px;
-        position: relative;
-        left: 2px;
+        i {
+          top: 9px;
+          position: relative;
+          left: 2px;
+        }
       }
     }
   }
