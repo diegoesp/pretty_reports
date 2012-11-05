@@ -3,16 +3,16 @@ namespace :pretty_reports do
   # Run a complete setup: re-create schema, prepare databases, seed, run tests, etc.
   task :setup do
     i = 1
-    total = 6
+    total = 5
     
+    # system "bundle exec rake db:drop RAILS_ENV=development"
+
     puts "# #{i} / #{total}: Migrating tables"
     system "bundle exec rake db:migrate RAILS_ENV=development"
-    # Rake::Task["db:migrate"].invoke
     i = i + 1
     
     puts "# #{i} / #{total}: Preparing test database"
     system "bundle exec rake db:test:prepare RAILS_ENV=development"
-    # Rake::Task["db:test:prepare"].invoke
     i = i + 1
 
     puts "# #{i} / #{total}: Annotate model"
@@ -26,9 +26,6 @@ namespace :pretty_reports do
     puts "# #{i} / #{total}: Running rspec tests"
     system "bundle exec rspec spec --color"
     i = i + 1
-
-    puts "# #{i} / #{total}: Running cucumber tests"
-    system "bundle exec cucumber RAILS_ENV=test"
   end
   
   # Start unicorn multithreaded server

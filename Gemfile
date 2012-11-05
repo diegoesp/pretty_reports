@@ -23,11 +23,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :test, :development do
-  gem "rspec-rails"
-  gem 'sqlite3'
-end
-
 group :development do
   gem 'annotate', '2.4.1.beta1'
   # For PDFKit tests
@@ -36,14 +31,15 @@ group :development do
   gem "debugger"
 end
 
-group :test do
+group :development, :test do
+  gem "rspec-rails"                         # RSpec testing framework interaction with rails
   gem 'capybara'                            # Driver for testing web apps and javascript via selenium
   gem 'launchy'                             # Launches the web browser via automation
   gem 'database_cleaner'                    # Resets database between tests
   gem 'turn', :require => false             # Better formatted test reports
-  gem 'minitest'                            # Support for cucumber
-  gem 'cucumber-rails', :require => false   # Allows to use cucumber DSL
   gem "pdf-reader"                          # for PDF testing
+  gem 'sqlite3'                             # Sqlite3 for testing
+  gem 'factory_girl_rails'                  # for fixtures
 end
 
 group :production do

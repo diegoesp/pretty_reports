@@ -29,10 +29,10 @@ test: &test
 
 
 production:
-  adapter: sqlite3
+  adapter: postgresql
   username: prprod
   password: prprod
-  database: db/production.sqlite3
+  database: pretty_reports_production
 
 cucumber:
   <<: *test
