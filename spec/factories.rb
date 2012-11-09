@@ -23,4 +23,12 @@ FactoryGirl.define do
     user
   end
 
+  factory :admin, :class => User do
+    first_name  "Karl"
+    last_name   "Admin"
+    email       "admin@prettyreports.com"
+    password    "password"
+    admin       true
+  end
+
 end

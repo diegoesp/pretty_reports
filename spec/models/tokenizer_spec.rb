@@ -14,8 +14,7 @@ require 'spec_helper'
 describe Tokenizer do
   
   before(:each) do
-    @user = User.create!(:first_name => "test", :last_name => "user", :email => "test@prettyreports.com", :password => "password")
-
+    @user = FactoryGirl.create(:user)
     @tokenizer = Tokenizer.create! :user_id => @user.id
   end
 

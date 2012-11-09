@@ -24,10 +24,8 @@
 # It packs an integration with active admin framework
 class User < ActiveRecord::Base
 
-  validates_uniqueness_of :email
   validates :last_name, :presence =>true
   validates :first_name, :presence =>true
-  validates :email, :presence =>true
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
