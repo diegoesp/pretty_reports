@@ -39,7 +39,12 @@ describe "Sprint Release Report" do
 
     Report.all.length.should > 0
     lambda do
-      visit "/reports/#{@report.id}.pdf"
+      visit("/reports/#{@report.id}.pdf")
+      # Under rake tasks exceptions are not raised, but returned as page text
+      if page.text.include?("Action Controller: Exception caught")
+        raise "Exception caught"
+      end
+
     end.should raise_error()
   end
 

@@ -8,6 +8,7 @@ class HomeController < ApplicationController
 
   def index      
     if !user_signed_in?
+      flash.keep
       redirect_to welcome_page_path
     end
 

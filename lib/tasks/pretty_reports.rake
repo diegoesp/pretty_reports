@@ -1,11 +1,15 @@
+require 'rake'
+require 'rspec/core/rake_task'
+
 namespace :pretty_reports do
 
   # Run a complete setup: re-create schema, prepare databases, seed, run tests, etc.
-  task :setup do
+  task :setup => [:environment] do
     i = 1
     total = 5
     
-    # system "bundle exec rake db:drop RAILS_ENV=development"
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
 
     puts "# #{i} / #{total}: Migrating tables"
     system "bundle exec rake db:migrate RAILS_ENV=development"
@@ -24,12 +28,13 @@ namespace :pretty_reports do
     i = i + 1
 
     puts "# #{i} / #{total}: Running rspec tests"
-    system "bundle exec rspec spec --color"
+    system "bundle exec rspec spec"
     i = i + 1
   end
   
-  # Start unicorn multithreaded server
+  # Start unicorn multithreaded server as a daemon
   task :unicorn do
     system "bundle exec unicorn_rails -c config/unicorn.conf.rb -D"
   end
+
 end

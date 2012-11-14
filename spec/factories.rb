@@ -1,10 +1,11 @@
 FactoryGirl.define do
 
   factory :user do
-    first_name  "Trevor"
-    last_name   "User"
-    email       "user@prettyreports.com"
-    password    "password"
+    first_name    "Trevor"
+    last_name     "User"
+    email         "user@prettyreports.com"
+    password      "password"
+    confirmed_at  "2012-11-10 00:00:00"
   end
 
   factory :item do
@@ -24,11 +25,12 @@ FactoryGirl.define do
   end
 
   factory :admin, :class => User do
-    first_name  "Karl"
-    last_name   "Admin"
-    email       "admin@prettyreports.com"
-    password    "password"
-    admin       true
+    first_name    "Karl"
+    last_name     "Admin"
+    email         "admin@prettyreports.com"
+    password      "password"
+    admin         true
+    confirmed_at  "2012-11-10 00:00:00"
   end
 
 end

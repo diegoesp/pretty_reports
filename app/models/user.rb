@@ -18,6 +18,9 @@
 #  admin                  :boolean
 #  first_name             :string(255)
 #  last_name              :string(255)
+#  confirmation_token     :string(255)
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
 #
 
 # A user for Pretty reports. It can either be an admin user or a standard user.
@@ -31,11 +34,11 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-  	:recoverable, :rememberable, :trackable, :validatable
+  	:recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :last_name, :first_name, :email, :password, 
-    :password_confirmation, :remember_me, :admin  
+    :password_confirmation, :remember_me, :admin, :confirmed_at
 
   has_many :reports
 
