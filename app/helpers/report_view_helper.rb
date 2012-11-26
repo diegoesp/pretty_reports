@@ -6,5 +6,4 @@ module ReportViewHelper
     end.join(' ')
   end
 
-
 end

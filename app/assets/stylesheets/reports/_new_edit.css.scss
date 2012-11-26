@@ -3,7 +3,7 @@
   background-image: image-url('bg-pattern.png');
   padding-bottom: 100px;
 
-  .save-button, .download-button  {
+  .save-button, .download-button, .import-button  {
     @include transition (all .5s);
     position: fixed;
     top: 36px;
@@ -35,6 +35,15 @@
 
     i {
       background: image-url('download-save-icons.png') -20px no-repeat;
+    }
+  }
+
+  .import-button {
+    right: 450px;
+    width: 100px;
+
+    i {
+      background: none;
     }
   }
 

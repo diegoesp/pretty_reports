@@ -11,7 +11,9 @@ gem 'pg'
 gem 'jquery-ui-rails'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
-gem "pdfkit"
+gem "pdfkit"                                  # PDF Generator gem
+gem "pivotal-tracker"                         # Pivotal tracker API
+gem "wicked"                                  # Wizard forms support gem
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,0 +1,35 @@
+<% provide(:title, 'Import Pivotal Wizard') %>
+<% provide(:page_id, "import-pivotal-wizard") %>
+
+<% content_for :head do %>
+  <script type="text/javascript">
+    // Initialize the js for this particular page when the DOM is ready.
+    $(document).ready(function() {
+      $("#stories").get(0).focus();
+    });
+  </script>
+<% end %>
+
+
+<div class="container">
+  <h1>Importing your stories from Pivotal Tracker</h1>
+  <h2>Step #3 / #4: Which stories do you want to import to your report ?</h2>
+
+  <%= form_tag(wizard_path, :method => "put") do %>
+    <select id="stories" name="stories[]" multiple="multiple" size="15">
+      <%
+      @stories.each do |story|
+      %>
+        <option value="<%=story.name%>"><%=story.name%></option>
+      <%
+      end
+      %>
+    </select>
+
+    <div class="wizard-buttons-container">
+      <input type="submit" value="Next" />
+      <%= link_to '(Back)', previous_wizard_path %>
+    </div>
+  <% end %>
+    
+</div>
