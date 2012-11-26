@@ -24,6 +24,8 @@ app.reports.SprintReleaseView = Base.View.extend({
 
     this.bindTo(app.events, 'report:save:clicked', this._reportSaveRequested);
     this.bindTo(app.events, 'report:download:clicked', this._downloadRequested);
+    this.bindTo(app.events, 'report:import:clicked', this._importRequested);
+
     this.bindTo(this.model, 'change:waitingForDownload',
       this._waitingForDownload);
 
@@ -78,6 +80,12 @@ app.reports.SprintReleaseView = Base.View.extend({
     this._updateModelBeforeSaving();
     app.events.trigger('report:download', this.model);
   },
+
+  _importRequested: function() {
+    this._updateModelBeforeSaving();
+    app.events.trigger('report:import', this.model);
+  },
+
 
   _updateModelBeforeSaving: function() {
     this.model.set('title', $('.js-title').text());

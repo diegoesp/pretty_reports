@@ -17,7 +17,7 @@
 class Report < ActiveRecord::Base
 
   attr_accessible :title, :subtitle, :content1, :content2, :content3,
-    :report_type
+    :report_type, :user_id
 
   validates :report_type, :presence => true
   has_many :items, order: "position ASC", dependent: :delete_all
@@ -50,7 +50,7 @@ class Report < ActiveRecord::Base
 
     filename.gsub(/[^0-9A-Za-z.\-]/, '_')
   end
-
+  
   private
 
   # Internal: This logic was extracted here due to platform compatibility issues

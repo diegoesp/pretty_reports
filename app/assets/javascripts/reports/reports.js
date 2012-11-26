@@ -20,6 +20,10 @@ app.reports = {
       app.events.trigger('report:download:clicked');
     });
 
+    $('.js-import-button').on('click', function(event){
+      app.events.trigger('report:import:clicked');
+    });
+
     this.models = {
       report: new app.reports.Report(options.report)
     };
