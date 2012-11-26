@@ -18,6 +18,9 @@
 #  admin                  :boolean
 #  first_name             :string(255)
 #  last_name              :string(255)
+#  confirmation_token     :string(255)
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
 #
 
 require 'spec_helper'
@@ -25,7 +28,7 @@ require 'spec_helper'
 describe User do
   
   before(:each) do
-    @user = User.create!(:first_name => "test", :last_name => "user", :email => "test@prettyreports.com", :password => "password", :admin => true)
+    @user = FactoryGirl.create(:user)
   end
 
   it "should be a valid object" do
@@ -45,6 +48,12 @@ describe User do
   it "should require first_name" do
     @user.first_name = nil
     @user.should_not be_valid
+  end
+
+  it "should not allow duplicated e-mails" do
+    lambda {    
+      @user2 = FactoryGirl.create(:user)
+    }.should raise_error(ActiveRecord::RecordInvalid)
   end
 
 end
