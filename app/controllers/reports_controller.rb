@@ -101,4 +101,5 @@ class ReportsController < ApplicationController
 
     redirect_to reports_url
   end
+
 end
