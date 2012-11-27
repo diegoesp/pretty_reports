@@ -1,15 +1,19 @@
 // Public: Representation of Sprint Release Report
 app.reports.SprintReleaseView = Base.View.extend({
 
-  // itemsAttrs        - Literal Item attributes. This list is only used
-  //                     when viewing a report with existent items.
-  // report            - Report Model
-  //
+  // model             - Report Model
+
   // deliveredListEl   - Reference to the jquery wrapper for the delivered list
   // notFinishedListEl - Reference to the jquery wrapper for the not
   //                     finished list
   // knownIssuesListEl - Reference to the jquery wrapper for the known
   //                     Issues List
+
+  itemSection: {
+    DELIVERED: 'delivered',
+    NOT_FINISHED: 'not-finished',
+    KNOWN_ISSUE: 'known-issue'
+  },
 
   el: '.js-sprint-release-report',
 
@@ -38,7 +42,17 @@ app.reports.SprintReleaseView = Base.View.extend({
       cursor: 'move',
       opacity: '.3',
       update: this._positionChanged,
-      that: this
+      that: this,
+      revert: true,
+      connectWith: '.js-sortable-report-items',
+      dropOnEmpty: true,
+      // Ugly hack for the issue of the position offset of the element when
+      // dragging it (on webkit browsers).
+      helper: function(event, ui){
+        var $clone =  $(ui).clone();
+        $clone.css('position','absolute');
+        return $clone.get(0);
+      }
     };
 
     this.deliveredListEl = this.$('.js-delivered');
@@ -79,19 +93,20 @@ app.reports.SprintReleaseView = Base.View.extend({
     var section = itemModel.get('section');
 
     switch (section) {
-      case 'delivered':
+      case this.itemSection.DELIVERED:
         this._renderItem(this.deliveredListEl, itemModel);
         break;
-      case 'not-finished':
+      case this.itemSection.NOT_FINISHED:
         this._renderItem(this.notFinishedListEl, itemModel);
         break;
-      case 'known-issue':
+      case this.itemSection.KNOWN_ISSUE:
         this._renderItem(this.knownIssuesListEl, itemModel);
         break;
     }
   },
 
  _renderItem: function(list, itemModel) {
+
     var length = list.sortable('toArray').length;
     itemModel.set('position', length);
 
@@ -108,17 +123,57 @@ app.reports.SprintReleaseView = Base.View.extend({
     this._updatePositionsAfterRemoving();
   },
 
+  // Private: This method is called each time a list is updated. When
+  // moving an element from one list to another this method will be called
+  // twice, since the udpate is happening on two lists.
+  //
   _positionChanged: function(ev, ui) {
-    var list = $(this);
-    var that = list.sortable('option', 'that');
-    var ids = list.sortable('toArray');
+    var that = $(this).sortable('option', 'that');
+
+    // If there is no sender it means that we need to handle the update for the
+    // same list where the drag started. No change of the section is required
+    // here.
+    if (!ui.sender) {
+      that._resetModelPropertiesAfterDragging($(this), that);
+    }
+
+    // If there is a sender it means that the element comes from a different
+    // list, so we need to update also the section.
+    if (ui.sender) {
+      var sectionName = that._sectionNameFromList($(this));
+      that._resetModelPropertiesAfterDragging($(this), that, sectionName);
+    }
+  },
+
+  // Private: Update the positions of the models by iterating the list and
+  // getting the index of each element.
+  // If a section is provided also the section will be updated.
+  _resetModelPropertiesAfterDragging: function(list, that, sectionName) {
+    var listIds = list.sortable('toArray');
     var collection = that.model.items;
 
-    _(ids).each(function(id, index){
-
+    // Update all the positions, easier than calculating the delta.
+    _(listIds).each(function(id, index){
       var model = collection.getByCid(id);
       model.set('position', index);
+      if (sectionName) {
+        model.set('section', sectionName);
+      }
     });
+  },
+
+  // Private: Return the name of the section for the item depending on
+  // the list sent by parameter.
+  _sectionNameFromList: function($list) {
+    if ($list) {
+      if ($list.hasClass('js-delivered')) {
+        return this.itemSection.DELIVERED;
+      } else if ($list.hasClass('js-not-finished')) {
+        return this.itemSection.NOT_FINISHED;
+      } else if ($list.hasClass('js-known-issues')) {
+        return this.itemSection.KNOWN_ISSUE;
+      }
+    }
   },
 
   _updatePositionsAfterRemoving: function() {
