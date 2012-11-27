@@ -134,18 +134,21 @@ app.reports.SprintReleaseView = Base.View.extend({
     // same list where the drag started. No change of the section is required
     // here.
     if (!ui.sender) {
-      that._resetAllModelPositions($(this), that);
+      that._resetModelPropertiesAfterDragging($(this), that);
     }
 
     // If there is a sender it means that the element comes from a different
     // list, so we need to update also the section.
     if (ui.sender) {
       var sectionName = that._sectionNameFromList($(this));
-      that._resetAllModelPositions($(this), that, sectionName);
+      that._resetModelPropertiesAfterDragging($(this), that, sectionName);
     }
   },
 
-  _resetAllModelPositions: function(list, that, sectionName) {
+  // Private: Update the positions of the models by iterating the list and
+  // getting the index of each element.
+  // If a section is provided also the section will be updated.
+  _resetModelPropertiesAfterDragging: function(list, that, sectionName) {
     var listIds = list.sortable('toArray');
     var collection = that.model.items;
 
