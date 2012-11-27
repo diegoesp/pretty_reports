@@ -44,6 +44,9 @@
 
   ul {
     padding: 0px;
+    // min-height required for the sortable plugin to allow dropping
+    // action on an empty list
+    min-height: 2px;
     list-style: none;
     li {
       cursor: move;

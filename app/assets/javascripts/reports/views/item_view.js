@@ -17,7 +17,9 @@ app.reports.ItemView = Base.View.extend({
   },
 
   render: function() {
+    // Set the html id to the backbone cid, useful to reference it later on.
     this.$el.attr('id', this.model.cid);
+
     this.$el.html(this.template(this.model.toJSON()));
     this._postRenderInitialization();
     return this;
@@ -38,6 +40,7 @@ app.reports.ItemView = Base.View.extend({
   _clicked: function() {
     prLog('>> Pos: ' + this.model.get('position'));
     prLog('>> Cid: ' + this.model.cid);
+    prLog('>> Section: ' + this.model.get('section'));
   },
 
   _postRenderInitialization: function() {
