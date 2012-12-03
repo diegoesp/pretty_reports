@@ -14,7 +14,7 @@ git clone https://github.com/diegoesp/pretty_reports.git
 
 Use this guide: https://github.com/diegoesp/pretty_reports/wiki/Rbenv-configuration
 
-3) Install PostgreSQLclea
+3) Install PostgreSQL
 
 Pretty Reports runs by default on 9.1. You can use this: https://github.com/diegoesp/pretty_reports/wiki/Setup-PostgreSQL-Ubuntu-Server
 
