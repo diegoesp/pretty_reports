@@ -1,6 +1,5 @@
-#import-pivotal-wizard {
+#import {
   padding-top: 90px;
-  background: image-url('bg-pattern.png');
 
   h1 {
     text-align: center;
@@ -13,7 +12,7 @@
   h2 {
   }
 
-  #pivotal_api_token {
+  #api_token {
     width:auto;
   }
 

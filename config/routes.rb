@@ -20,6 +20,6 @@ PrettyReports::Application.routes.draw do
 
   resources :users
 
-  resources :import_pivotal_wizard
+  resources :import
 
 end

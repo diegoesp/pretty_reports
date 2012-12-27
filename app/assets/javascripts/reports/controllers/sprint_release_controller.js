@@ -35,7 +35,7 @@ app.reports.SprintReleaseController = function(options) {
 
     wizard = function() {
       // TODO: Replace with http://www.webdesignerdepot.com/2012/10/creating-a-modal-window-with-html5-and-css3/ ?
-      window.location.href = "/import_pivotal_wizard/new?report_id=" + this.report.id;
+      window.location.href = "/import/new?report_id=" + this.report.id;
     };
 
     this._saveReport(null, wizard);
