@@ -12,7 +12,7 @@ gem 'jquery-ui-rails'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 gem "pdfkit"                                  # PDF Generator gem
-gem "pivotal-tracker"                         # Pivotal tracker API
+gem "pivotal-tracker", '0.5.8'                # Pivotal tracker API. Use 0.5.8 as next versions have a bug retrieving stories
 gem "wicked"                                  # Wizard forms support gem
 
 # Gems used only for assets and not required
@@ -21,6 +21,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'libv8', '3.11.8.3'		      # Newer versions of Ruby Racer may not install without this
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
 end
@@ -36,6 +37,7 @@ end
 group :development, :test do
   gem "rspec-rails"                         # RSpec testing framework interaction with rails
   gem 'capybara'                            # Driver for testing web apps and javascript via selenium
+  gem 'selenium-webdriver'
   gem 'launchy'                             # Launches the web browser via automation
   gem 'database_cleaner'                    # Resets database between tests
   gem 'turn', :require => false             # Better formatted test reports

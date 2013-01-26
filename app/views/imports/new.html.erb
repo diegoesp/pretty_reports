@@ -12,20 +12,21 @@
 
 <div id="import_div" class="import">
   <h1>Importing your stories from Pivotal Tracker</h1>
+
     <label>Pivotal API Token</label>
     <input type="text" id="api_token" name="api_token" size="37" />
     <span id="api_token_span"></span>
 
     <label>Projects</label>
-    <select id="projects"></select>
+    <select id="projects" disabled="disabled"></select>
     <span id="projects_span"></span>
 
     <label>Iterations</label>
-    <select id="iterations"></select>
+    <select id="iterations" disabled="disabled"></select>
     <span id="iterations_span"></span>
     
     <div class="wizard-buttons-container">
-      <input type="submit" value="Import" />
-      <input type="button" value="Cancel" />
+      <input id="import_button" type="submit" value="Import" disabled="disabled" />
+      <input id="cancel_button" type="button" value="Cancel" />
     </div>
 </div>

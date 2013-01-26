@@ -60,4 +60,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  # New version of RSpec packs a bugs with the includes order. This fixes it.
+  config.include Capybara::DSL
 end

@@ -23,7 +23,7 @@
 # tokenizer = Tokenizer.find_token_by_uid(key)
 # 
 # Be careful: the token expires after a time (use expiration_time static 
-# method to know much time they take to expire). If yor token has expired an
+# method to know much time they take to expire). If your token has expired an
 # error will be raised.
 class Tokenizer < ActiveRecord::Base
   attr_accessible :uid, :user_id
